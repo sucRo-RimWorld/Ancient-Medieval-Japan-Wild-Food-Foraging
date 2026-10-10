@@ -51,11 +51,11 @@ Existing AMJE `AMJ_Tree_Shii` and `AMJ_Tree_Beech` are currently **wood-producin
 
 ## 5. First technical decision: collecting nuts without cutting the tree
 
-The necessary first check is whether RimWorld 1.6's **actual loaded native Plant/Tree harvest behavior** supports separately collecting an edible product repeatedly while preserving tree cutting and its existing wood outputs, including MO wood-chain substitution.
+**1.6 code inspection result (2026-10-10):** The 1.6 public decompiled `PlantCollected` path already supports a **non-destroying ordinary harvest** when `harvestAfterGrowth > 0`, but the plant's **primary harvestedThingDef is shared by harvest and cutting**. `JobDriver_PlantCut` also explicitly destroys its plant target. Thus merely switching the existing Environment `AMJ_Tree_Shii` to a fruit output, making its existing wood yield repeatable, or attaching an unqualified dual-output extension does **not** establish **separate edible-nut picking while preserving woodcut yields**. The MO 1.6 fruit-tree XML demonstrates regrowing primary fruit harvesting, not the required dual-use timber contract. Read [actual source evidence and restrictions](Research/ExistingModAudit.md#2026-10-10--16-native-harvestwoodcut-source-audit-code-level-not-runtime-pass).
 
-Do not conclude that simply setting `harvestedThingDef` on a `TreeBase` preserves both products: inspect Vanilla source, MO 1.6 fruit-tree definitions, actual cut-vs-harvest behavior and existing VE/non-VE implementation first. Compare narrow XML/patch-only routes to a justified minimal Harmony/C# implementation if the native route fails. A disposable probe may establish semantics but is **not** production implementation.
+The remaining technical question is whether a **separate tree-preserving nut collection action** can use native ThingComp/Job capabilities or established small existing mechanics while leaving Environment's original tree planting, growth, timber harvestedThingDef, wood cutting and MO substitution untouched. Research alternate native/VE/non-VE actual implementations and then compare a narrow XML/patch route against minimal justified custom behavior. Do not add an independent Job/C# or gameplay Def before the full Project-format prior-art implementation decision.
 
-Determine in order: existing behavior → loaded Environment plant and dependency contract → source ownership of the edible product and patch → real harvest and cut coexistence → seasonal/renewal mechanics → balance and art. No default numeric fruit yield, regrowth period or season is fixed.
+Determine in order: original native behavior (source checked, loaded game untested) → independent-harvest prior art and loaded Environment+MO coexistence → food-item/patch ownership → real tree survival and **separate** normal timber cutting → seasonal and renewal design → balance/art. No fruit yield, regrowth period or season is fixed.
 
 ## 6. Entry tests and release gates
 
