@@ -1,6 +1,6 @@
 # Ancient & Medieval Japan - Wild Food Foraging / 中世日本 - 山野採集
 
-A planned, standalone RimWorld 1.6 Mod for wild plant foods in ancient-to-medieval Japan: edible nuts, natural yams and mountain greens. Its confirmed scope **does not** add a new animal-hunting system. Coastal gathering and food preservation remain separate work.
+A planned RimWorld 1.6 Mod for wild plant foods in ancient-to-medieval Japan, **requiring [AMJ Environment](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment)** to supply Japan-native trees such as Sudajii. Its proposed food scope includes edible nuts, natural yams and mountain greens. Its confirmed scope **does not** add a new animal-hunting system. Coastal gathering and food preservation remain separate work.
 
 **Current state: design and existing-Mod research only. There are no playable Defs, assets or a release in this repository.**
 
