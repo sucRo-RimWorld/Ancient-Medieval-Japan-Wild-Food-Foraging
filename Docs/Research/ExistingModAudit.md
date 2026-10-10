@@ -25,7 +25,7 @@ Project's 2026-10-10 screening in [historical research](https://github.com/sucRo
 
 ## Pending decision
 
-Evaluate function overlap, historical fit, dependency footprint, retention, progression/balance, reusable framework, maintenance and licensing for each material alternative. Decide reuse / optional compatibility / narrow patch / independent implementation with concrete unmet need. Save validated evidence notes and a Project-format decision only once the unresolved material cases are closed. Then evaluate a minimal **non-destructive Sudajii nut harvest** using the required Environment tree without changing its identity or vanilla/MO wood output. No new runtime content is authorized by this record.
+Evaluate function overlap, historical fit, dependency footprint, retention, progression/balance, reusable framework, maintenance and licensing for each material alternative. Decide reuse / optional compatibility / narrow patch / independent implementation with concrete unmet need. Save validated evidence notes and a Project-format decision only once the unresolved material cases are closed. Then evaluate a **species-reusable non-destructive tree-nut collection mechanism** with existing Environment Sudajii as the first technical test case, without changing plant identities or vanilla/MO wood output. The intended tree-nut scope also contains the existing Buna candidate and the unapproved Kuri vegetation candidate; neither is granted harvest functionality or balances by a Sudajii prototype. An existing regional Vanilla Oak is not yet an approved acorn-harvest item. No new runtime content is authorized by this record.
 
 ## 2026-10-10 — 1.6 native harvest/woodcut source audit (code-level, not runtime PASS)
 
