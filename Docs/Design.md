@@ -12,7 +12,7 @@ Represent **edible wild plants and forest foods** accessible to people living ne
 
 **Out of scope:** a new animal hunting/trapping/tracking/butchering subsystem; generic fishing, shellfish, seaweed, coastal gathering or shell middens; dedicated food preservation/drying/pickling; grain farming; arbitrary world-map expeditions in the first implementation; placing inexhaustible gathering buildings just to simulate excursions. Vanilla hunting remains unchanged. Edo-specific culture/processing is outside AMJ's target.
 
-## 2. Ownership and optional dependencies
+## 2. Environment required dependency and ownership
 
 | Feature | Canonical owner |
 | --- | --- |
@@ -22,7 +22,11 @@ Represent **edible wild plants and forest foods** accessible to people living ne
 | Wild/coastal shellfish and algae | Separate Coastal Gathering candidate (Project) |
 | Dry-field cereals | AMJ Grains |
 
-This Mod must not require Environment, MO, DLC or unrelated vegetation Mods merely to provide the bounded wild-food loop. **How a standalone natural supply is provided is still an open design/implementation question**. With Environment installed, prefer its owned vegetation and avoid duplicate species/plant generation, conflicting harvest overrides or a second source-of-truth for regional distribution. Do not add an Environment tree Def in this repository as an expedient.
+**Author-approved change (2026-10-10): AMJ Environment is a required runtime dependency.** Japanese natural vegetation, including the existing `AMJ_Tree_Shii` (スダジイ), is indispensable to the intended medieval-Japan forest gathering experience. The Environment `About/About.xml` packageId is **`sucro.ancientmedievaljapan.environment`**. When Foraging's playable `About/About.xml` is introduced, its `modDependencies` must require that exact packageId and its loading must follow Environment. No playable Foraging About metadata exists yet; this is an approved **design contract**, not a claim that RimWorld dependency metadata has been implemented.
+
+**Dependency direction: Wild Food Foraging → Environment, never the reverse.** Environment keeps ownership of native plant and tree Defs, biomes, natural distribution, planting and forestry, and original plant art. Foraging adds edible collection and food use; it does not provide a fallback vegetation/biome set or duplicate Environment trees. MO, CCTO, DLC and other vegetation Mods remain optional. A required Def does **not** imply Sudajii must grow in every biome or on every map; Environment's regional distribution still governs where it is present.
+
+**Required ecological foundation is distinct from approved food content.** `AMJ_Tree_Shii` and `AMJ_Tree_Beech` already exist in Environment, and Sudajii nuts are the first technical research target. Beech nuts, Kuri/chestnut, additional fruit trees, natural yams, mountain greens and mushrooms remain individual candidate decisions; no unapproved species, yields, harvest cycles or recipes become mandatory through this dependency decision.
 
 ## 3. Geography and action interface — confirmed direction
 
@@ -51,14 +55,14 @@ The necessary first check is whether RimWorld 1.6's **actual loaded native Plant
 
 Do not conclude that simply setting `harvestedThingDef` on a `TreeBase` preserves both products: inspect Vanilla source, MO 1.6 fruit-tree definitions, actual cut-vs-harvest behavior and existing VE/non-VE implementation first. Compare narrow XML/patch-only routes to a justified minimal Harmony/C# implementation if the native route fails. A disposable probe may establish semantics but is **not** production implementation.
 
-Determine in order: existing behavior → source ownership of product and patch → no-Environment fallback → real harvest and cut coexistence → seasonal/renewal mechanics → balance and art. No default numeric fruit yield, regrowth period or season is fixed.
+Determine in order: existing behavior → loaded Environment plant and dependency contract → source ownership of the edible product and patch → real harvest and cut coexistence → seasonal/renewal mechanics → balance and art. No default numeric fruit yield, regrowth period or season is fixed.
 
 ## 6. Entry tests and release gates
 
 1. [Existing-Mod Audit](Research/ExistingModAudit.md): inspect actual XML/code for Vanilla/MO, VE and non-VE, including More Mushrooms/Famine Food; record versions, licensing, dependency cost, retained content, and exact mechanical overlap. A Project-format `status=ready` JSON is **not present** because this audit is open. [Entry format](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Research/ExistingModAudit.md).
-2. The actual native harvest/cut workflow must prove that gathering does **not** consume the tree unintentionally, replace timber yields, or double-reward wood and food. MO, stand-alone and Environment/coexistence cases are separate checks.
-3. Species additions and existing-save compatibility follow the Environment [old-save fruit-tree test specification](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/GoldenPaths/PlantSowingTests.md): pre-update AMJE save → upgrade → **natural** existing-map appearance → mature real harvest and (where sowable) research-gated sow Job → save/reload, complete logs, ERROR zero. Forced-spawn-only tests do not clear natural-spawning claims.
-4. Distinguish Vanilla, MO, CCTO and MO+CCTO runtime profiles; do not infer an unrun profile PASS from XML, mocks or historical logs.
+2. The actual native harvest/cut workflow must prove that gathering does **not** consume the tree unintentionally, replace timber yields, or double-reward wood and food. Environment+Vanilla and Environment+MO cases (with optional CCTO profiles) are separate checks; an Environment-free Foraging profile is no longer in scope.
+3. Species additions and existing-save compatibility follow the Environment [old-save fruit-tree test specification](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/GoldenPaths/PlantSowingTests.md): existing-AMJE save → add Foraging and/or upgrade AMJE as applicable → **natural** existing-map appearance for added wild plants → mature real harvest and (where sowable) research-gated sow Job → save/reload, complete logs, ERROR zero. Foraging food extraction from trees already on the map and newly added AMJE wild plant spawning must be tested as distinct scenarios. Forced-spawn-only tests do not clear natural-spawning claims.
+4. Include Environment in **every** runtime profile; distinguish Environment+Vanilla, Environment+MO, Environment+CCTO and Environment+MO+CCTO; do not infer an unrun profile PASS from XML, mocks or historical logs.
 5. Approved Japanese historical descriptions before translation, actual accepted artwork and the exact final Steam subscriber payload are separate future gates. No public version, package ID, Workshop ID, runtime PASS or release approval has been assigned.
 
 ## Sources / provenance

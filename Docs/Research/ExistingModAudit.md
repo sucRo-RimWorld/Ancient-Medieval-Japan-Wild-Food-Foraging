@@ -2,6 +2,8 @@
 
 **2026-10-10 status:** INCOMPLETE. This is evidence triage, **not** the Project implementation-entry `status=ready` decision. No owner-qualified JSON was created.
 
+**Approved dependency boundary (2026-10-10):** Environment (`sucro.ancientmedievaljapan.environment`) supplies required Japan-native vegetation including `AMJ_Tree_Shii`; no substitute standalone vegetation/biome system is planned for Foraging. This architectural decision does **not** complete VE/non-VE function-overlap research or authorize additional tree/food definitions.
+
 ## Proven directly from available sources
 
 - **Environment main** `Defs/ThingDefs_Plants/AMJ_WildPlants.xml` blob `e1985eb77f80f0f0c3c3140962dcb5810e94b4a5`: `AMJ_Tree_Shii` uses `TreeBase`, `harvestYield=42`; `AMJ_Tree_Beech` uses `DeciduousTreeBase`, `harvestYield=40`; no AMJE edible nut harvestedThingDef in these two tree definitions. These values are not assigned to edible nuts.
@@ -23,4 +25,4 @@ Project's 2026-10-10 screening in [historical research](https://github.com/sucRo
 
 ## Pending decision
 
-Evaluate function overlap, historical fit, dependency footprint, retention, progression/balance, reusable framework, maintenance and licensing for each material alternative. Decide reuse / optional compatibility / narrow patch / independent implementation with concrete unmet need. Save validated evidence notes and a Project-format decision only once the unresolved material cases are closed. Then evaluate a minimal **non-destructive Sudajii nut harvest** without changing Environment's plant identity or vanilla/MO wood output. No new runtime content is authorized by this record.
+Evaluate function overlap, historical fit, dependency footprint, retention, progression/balance, reusable framework, maintenance and licensing for each material alternative. Decide reuse / optional compatibility / narrow patch / independent implementation with concrete unmet need. Save validated evidence notes and a Project-format decision only once the unresolved material cases are closed. Then evaluate a minimal **non-destructive Sudajii nut harvest** using the required Environment tree without changing its identity or vanilla/MO wood output. No new runtime content is authorized by this record.
