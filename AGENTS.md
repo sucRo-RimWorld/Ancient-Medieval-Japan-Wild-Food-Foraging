@@ -13,7 +13,7 @@ The confirmed design is in Docs/Design.md; Project retains only shared architect
 ## Entry and evidence
 - **Production implementation is HOLD** until VE **and non-VE**, Vanilla, MO and AMJ-owner actual-source comparison establishes an unresolved need and a validated Project-format implementation decision. Prior-art research and disposable tests may continue.
 - Existing AMJE Sudajii/Beech harvest values are wood-related. Do not reinterpret them as edible nuts or replace wood-cut yields without checking the actual loaded semantics.
-- No species, yields, harvest cycles, season numbers, research unlocks, ingredients, recipes, JobDefs, textures, packageId or dependencies are accepted solely by repository creation.
+- **Approved exception to default minimal dependencies:** Foraging requires AMJ Environment (`sucro.ancientmedievaljapan.environment`) as its one-way upstream native-vegetation provider. No additional Mod dependency or species, yield, harvest cycle, season, recipe, JobDef, texture, or Foraging packageId is approved by repository creation.
 - Prefer native RimWorld harvest designations/jobs. New C# behavior must be justified by actual engine limitations, and preservation of cut/wood flow must be tested.
 - Follow [Project GitHub main protection](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/GitHubMainProtection.md): topic branch → PR → exact head and triggered CI checks → merge → main SHA verification. Never write directly to main. Do not enable Codex PR review.
 - Release claims require actual code, assets, loaded-game and old-save/profile evidence. Steam publication is author-managed. This repository contains no playable Mod yet.
