@@ -32,6 +32,8 @@ namespace AMJ.WildFoodForaging
                 return null;
 
             if (pawn.Map.designationManager.DesignationOn(thing, gather) == null ||
+                pawn.Map.designationManager.DesignationOn(thing, DesignationDefOf.CutPlant) != null ||
+                pawn.Map.designationManager.DesignationOn(thing, DesignationDefOf.HarvestPlant) != null ||
                 thing.IsForbidden(pawn) || thing.IsBurning() ||
                 !pawn.CanReserveAndReach(thing, PathEndMode.Touch, Danger.Some))
                 return null;
