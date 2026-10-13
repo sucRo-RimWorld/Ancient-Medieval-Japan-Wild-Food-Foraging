@@ -41,7 +41,7 @@ Represent **edible wild plants and forest foods** accessible to people living ne
 | --- | --- | --- |
 | Sudajii / Castanopsis nuts | Existing Environment `AMJ_Tree_Shii`; its tree description notes edible seeds | First **technical research** target. Separate edible product collection must not break cutting/wood flow |
 | Buna / beech nuts | Existing Environment `AMJ_Tree_Beech`; an optional forest-food distinction was proposed | Investigate edibility, processing and real added gameplay; **not adopted** |
-| Kuri / chestnut | Previous Environment vegetation review marked candidate B+ | Not promoted to a new tree/ThingDef |
+| Kuri / chestnut | Previous Environment vegetation review marked candidate B+; non-VE VV - New Harvest also supplies chestnut trees | Not promoted to a new tree/ThingDef. Compare reuse/optional coexistence and natural Japan-biome suitability **before** introducing a duplicate species; see [fruit-tree prior-art audit](Research/AdditionalFruitTreeModAudit-20261014.md) |
 | Natural yams (自然薯) | Forest food instead of farm crop; mountain/foothill soil candidate | Species, harvesting, world placement and food processing unresolved |
 | Mountain greens (山菜) | Foraging category from Project design | Individual species, rarity and use unresolved |
 | Wild mushrooms | More Mushrooms or MO may already supply enough | Audit first; prefer optional compatibility over duplication |
