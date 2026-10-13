@@ -31,6 +31,7 @@ class TestShiiSourceContract(unittest.TestCase):
         for field in ('Scribe_Values.Look(ref lastGatherTick', 'Scribe_Values.Look(ref hasGathered',
                       'plant.def.defName != "AMJ_Tree_Shii"', 'Props.productDef == null',
                       'Props.yieldCount <= 0', 'Props.cooldownTicks <= 0', 'Props.workTicks <= 0',
+                      'plant.LifeStage != PlantLifeStage.Mature', 'Props.yieldCount > Props.productDef.stackLimit',
                       'lastGatherTick = Find.TickManager.TicksGame'):
             self.assertIn(field, content)
         self.assertLess(content.index('GenPlace.TryPlaceThing'), content.index('lastGatherTick = Find.TickManager.TicksGame;'))
