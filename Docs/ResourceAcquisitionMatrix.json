@@ -43,7 +43,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "inherit_environment_tree_sowing",
+      "plantingRationale": "Environment native tree contract: TreeSowing research + regional wild eligibility applies to AMJ_Tree_Shii; no Foraging changes",
+      "sowingResearchGate": "Environment",
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-N02",
@@ -64,7 +68,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "native_tree_sowing",
+      "plantingRationale": "Foraging-owned wild Kuri: use native tree planting after TreeSowing, only in its permitted wild-region habitat, in addition to natural occurrence",
+      "sowingResearchGate": "TreeSowing",
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-N03",
@@ -85,7 +93,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "native_tree_sowing",
+      "plantingRationale": "Foraging-owned wild walnut: native researched tree planting only where its approved regional/wet-valley habitat and plant growth allow, without changing wood collection",
+      "sowingResearchGate": "TreeSowing",
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-N04",
@@ -106,7 +118,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "native_tree_sowing",
+      "plantingRationale": "Foraging-owned Kaya: native researched tree planting limited to accepted wild-climate region, independent of nut harvest",
+      "sowingResearchGate": "TreeSowing",
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-G01",
@@ -127,7 +143,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "wild_only_initial",
+      "plantingRationale": "Bracken is a fern from a regenerating rhizome; no ordinary grow-zone sowing in first release. Revisit only for a separate species-specific transplant mechanism",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-G02",
@@ -148,7 +168,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "wild_only_initial",
+      "plantingRationale": "Zenmai fern: natural shoot collection only initially; no invented seed-sowing menu for spore-bearing fern",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-G03",
@@ -170,7 +194,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "native_shoot_sowing",
+      "plantingRationale": "Fuki may be intentionally grown using existing grow-zone plant behavior while also naturally appearing in humid wild habitat; no new cultivation system or seed item",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-G04",
@@ -191,7 +219,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "native_shoot_sowing",
+      "plantingRationale": "Wild Udo may be intentionally grown using existing grow-zone plant behavior as well as forage; not a new blanched/hothouse crop or separate farming framework",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-R01",
@@ -212,7 +244,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "wild_dig_only_initial",
+      "plantingRationale": "Wild Jinenjo root is foraged/digged rather than grown as a farm crop in this Mod's first pass. Preserve possibility of distinct later yam agriculture ownership",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-F01",
@@ -233,7 +269,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "fungus_not_sowable",
+      "plantingRationale": "Hiratake natural hardwood-decay fruiting bodies; no mushroom farming or sowing",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-F02",
@@ -253,7 +293,11 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "fungus_not_sowable",
+      "plantingRationale": "Matsutake is dependent on genuine eligible living pine roots; no grow-zone sowing or inoculation",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     },
     {
       "id": "WF-F03",
@@ -274,7 +318,19 @@
       "workTicks": null,
       "regrowthTicks": null,
       "seasonWindow": null,
-      "wildPlantCommonality": null
+      "wildPlantCommonality": null,
+      "plantingPolicy": "fungus_not_sowable",
+      "plantingRationale": "Shiitake wild hardwood-decay fruit bodies; no cultivation bed/log inoculation or grow-zone sowing",
+      "sowingResearchGate": null,
+      "plantingImplementationStatus": "specification_only_not_in_game"
     }
-  ]
+  ],
+  "plantingRules": {
+    "scope": "species-specific; wild occurrence retained for all adopted foods; no blanket ban; no agricultural/fungi framework",
+    "treePolicy": "Environment Shii inherits existing TreeSowing/wild-region constraints; Foraging-owned Kuri/walnut/Kaya use existing TreeBase research+regional wild requirement; no override of AMJE existing trees",
+    "shootPolicy": "First-pass wild-only Warabi/Zenmai; Fuki/Udo use native sowing with ordinary grow zones and natural distribution. No new crop research, seed item or general farming framework.",
+    "rootPolicy": "Wild Jinenjo harvested as a root and not normally sowable in this wild-foraging module's initial release.",
+    "fungusPolicy": "Three wild fungi remain entirely non-sowable; fruiting bodies depend on host/substrate and cannot be produced by planting grow zones.",
+    "unknowns": "Actual XML/loaded menu, sow Job, soil, growth, harvest and region gating not tested; no numeric seeds, research times or stats introduced."
+  }
 }

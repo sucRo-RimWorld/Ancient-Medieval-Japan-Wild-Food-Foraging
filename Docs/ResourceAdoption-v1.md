@@ -6,7 +6,7 @@
 
 - **新たな食用自然物の木・草・菌類のThingDef/PlantDef、食材、原画、EnvironmentのBiomeへの出現Patch、採集/利用はすべてWild Food Foraging所有。** Environmentの既存スダジイ・ブナ等の景観PlantDef/元木材/植生とBiomeDefsはEnvironment所有のまま。既存樹木に食用機能のみForaging側から追加。
 - Foraging → Environment（`sucro.ancientmedievaljapan.environment`）の**必須・一方向**依存。MO/CCTO/VE/VV/More Mushroomsは必須依存にしない。いずれも他Modのコンテンツを無断転用しない。
-- **天然の山野採集**が対象。果樹の新しい農業・苗木生産、菌床・原木栽培、保存・澱粉精製、専門狩猟、海産物はこの採用リストに含めない。自然植生の分布条件はEnvironment Biome・既存林相・温度・生態上の適合性に従う。
+- **天然の山野採集**が対象であり、既存農業システムの拡張・苗木生産・菌床/原木栽培・保存/澱粉精製・狩猟/海産物は扱わない。**ただし天然採集対象であることは植え付けを一律に禁止する意味ではない。** 既存スダジイはEnvironmentの樹木研究/地域制限を保持し、新規クリ・クルミ・カヤは同条件の植林を許可、フキ・ウドは既存栽培ゾーンでの植え付けも許可する。ワラビ・ゼンマイ・自然薯は初期版の野生採集専用、きのこ3種は栽培不可とする。具体的な各資源の植栽正本は[AcquisitionDesign](AcquisitionDesign.md)／[ResourceAcquisitionMatrix](ResourceAcquisitionMatrix.json)。自然植生の分布条件はEnvironment Biome・既存林相・温度・生態上の適合性に従う。
 - ここでの「採用」は**その自然物をAMJ山野採集で扱うこと**を確定する。植物/食材DefName、重さ・栄養量、出現commonality、成長期間、採集量、作業時間、加工レシピ、具体的な植生アート、互換Patchは**未確定**。採用一覧と本番導入は別ゲート。
 
 ## 第1次・再評価後の採用自然物（12資源）
