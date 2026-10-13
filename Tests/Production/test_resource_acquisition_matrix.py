@@ -102,5 +102,44 @@ class ResourceAcquisitionContract(unittest.TestCase):
         self.assertNotIn("PASS", self.model["scope"])
 
 
+    def test_sowing_is_decided_individually_not_banned_globally(self):
+        policy = {id_: item["plantingPolicy"] for id_, item in self.by_id.items()}
+        self.assertEqual(policy["WF-N01"], "inherit_environment_tree_sowing")
+        self.assertEqual(
+            {id_ for id_, name in policy.items() if name == "native_tree_sowing"},
+            {"WF-N02", "WF-N03", "WF-N04"})
+        self.assertEqual(
+            {id_ for id_, name in policy.items() if name == "native_shoot_sowing"},
+            {"WF-G03", "WF-G04"})
+        self.assertEqual(
+            {id_ for id_, name in policy.items() if name == "wild_only_initial"},
+            {"WF-G01", "WF-G02"})
+        self.assertEqual(policy["WF-R01"], "wild_dig_only_initial")
+        self.assertEqual(
+            {id_ for id_, name in policy.items() if name == "fungus_not_sowable"},
+            {"WF-F01", "WF-F02", "WF-F03"})
+
+    def test_tree_sowing_reuses_research_and_environment_region(self):
+        self.assertEqual(self.by_id["WF-N01"]["sowingResearchGate"], "Environment")
+        for id_ in ("WF-N02", "WF-N03", "WF-N04"):
+            item = self.by_id[id_]
+            self.assertEqual(item["sowingResearchGate"], "TreeSowing")
+            self.assertIn("region", item["plantingRationale"])
+            self.assertIsNone(item["existingEnvironmentPlantDef"])
+
+    def test_non_trees_do_not_invent_research_or_crop_system(self):
+        for id_, item in self.by_id.items():
+            self.assertEqual(item["plantingImplementationStatus"],
+                             "specification_only_not_in_game")
+            self.assertTrue(item["plantingRationale"])
+            if not id_.startswith("WF-N"):
+                self.assertIsNone(item["sowingResearchGate"])
+        rules = self.model["plantingRules"]
+        self.assertIn("no blanket ban", rules["scope"])
+        self.assertIn("grow zones", rules["shootPolicy"])
+        self.assertIn("no", rules["fungusPolicy"].lower())
+
+
+
 if __name__ == "__main__":
     unittest.main()
