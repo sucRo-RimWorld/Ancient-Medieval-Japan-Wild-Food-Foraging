@@ -1,6 +1,6 @@
 # Tree-product collection — proposed acceptance contract
 
-**State:** RESEARCH TEST PLAN ONLY; no production source or approved new game feature. This describes **what would be tested** before making a claim; none of these cases has been executed in RimWorld. Tree collection, species, yields, seasons and Defs remain unapproved until the entry decision and owning Design specify them.
+**State:** MECHANISM SOURCE STAGED BUT INACTIVE; no compiled assembly, gameplay resource, linked Defs, accepted numeric specification or completed runtime checks. The narrowly scoped [mechanism entry decision](../Research/ShiiMechanismDecision.json) and [original C# sources](../../Source/AMJWildFoodForaging/README.md) exist. This describes **what would be tested** before making a claim; none of these cases has been executed in RimWorld. Tree collection, species, yields, seasons and Defs remain unapproved until the entry decision and owning Design specify them.
 
 **Dependencies:** every game profile must have Environment loaded first, not just an optional fallback. Foraging must not duplicate Environment PlantDefs. MO and CCTO are optional and independent profile axes. Use the actual source/provider fingerprints, full Player.log and ERROR-zero gates.
 
@@ -31,3 +31,7 @@ No new hunting, fungal species, chestnuts, wild yams, yam recipes, preservation,
 - [Owner Design](../Design.md) remains the only content specification authority.
 - Current result: **NOT RUN** for all F01–F14; static comparison is source observation, **not** a PASS for any F-case.
 - This plan is promoted to actual Pickle/RimTest/native tests **only** when production implementation receives a validated Project-format existing-Mod entry decision. Remove or narrow obsolete scenarios if the accepted mechanism uses existing native behavior instead of custom jobs.
+
+## Mechanism source coverage (not RimWorld)
+
+`Tests/Production/test_shii_source_contract.py` checks exact source invariants: original wood-primary harvest unchanged; no native `PlantCollected`; saved per-tree state; disabled output without food/cooldown/work configuration; target reservation and native cut-order exclusion. These are static assertions only. A passing result does **not** clear any F01–F14 native scenario, build, save migration, CCTO/MO compatibility, UI or release approval.

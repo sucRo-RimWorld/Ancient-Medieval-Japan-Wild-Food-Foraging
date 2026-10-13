@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "feature": "Standing Sudajii independent gathering mechanism (no item/balance activation)",
+  "owner": "sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging",
+  "scope": "Implement original C# tree-targeted gather Job and persistent per-tree state only; preserve Environment-owned timber harvest and MO conversion. No approved resource ThingDef, quantity, cooldown duration, season, graphics, playable release, or new species.",
+  "status": "ready",
+  "search": {
+    "date": "2026-10-14",
+    "queries": [
+      "RimWorld 1.6 PlantCollected timber native JobDriver PlantCut separate harvest",
+      "Vanilla Plants Expanded 1.6 dual crop fruit TreeBase harvestAfterGrowth",
+      "RimWorld non-VE existing tree independent resin collect harvest cooldown JobDriver Gather Vivi",
+      "VV New Harvest Trees fruit regrow wood chopping",
+      "RimWorld More Tree Products Bunny framework destruction loot",
+      "Expanded Woodworking 2 fruit trees butcherProducts"
+    ],
+    "ecosystems": [
+      "vanilla_mo",
+      "amj",
+      "ve",
+      "non_ve"
+    ],
+    "limitations": "This is a bounded mechanism-only decision. Actual VV Trees PlantDefs and EW2 sources not directly retrieved; they describe renewable fruit-primary trees and lumber processing rather than a second action on existing timber Shii. Loaded 1.6 native WoodChain, actual old-save/season cases and F01-F14 remain untested, blocking release. Exact game output/food amounts, seasons, cooldown, graphics, Japanese flavor and Workshop are not approved and not in scope."
+  },
+  "evidence": [
+    {
+      "id": "shii-mechanism-20261014",
+      "path": "Docs/Research/ShiiMechanismEntryEvidence-20261014.md",
+      "sha256": "802287377d00a7735b4be49934719c1bc5ba536ade42eb00abb7abc5b7f5eb09"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Vanilla 1.6/MO 1.6 native plant work and cut",
+      "ecosystem": "vanilla_mo",
+      "version": "RimWorld 1.6 and MO 1.6 author ZIP",
+      "evidence": [
+        "shii-mechanism-20261014"
+      ],
+      "comparison": {
+        "function": "Single primary harvestedThingDef common to harvest/cut; cutting destroys plant",
+        "historical_fit": "Neutral engine semantics",
+        "dependencies": "Vanilla native; MO optional",
+        "retention": "Retains native wood if unmodified",
+        "progression_balance": "Swapping harvestedThingDef or emitting extra PlantCollected would break Shii wood",
+        "reuse": "Keep native wood cutting only",
+        "maintenance_license": "Game engine code is not reused or patched; installed 1.6 runtime untested"
+      },
+      "outcome": "prior_art_only"
+    },
+    {
+      "name": "AMJ Environment Shii TreeBase",
+      "ecosystem": "amj",
+      "version": "AMJE main XML 2026-10-14",
+      "evidence": [
+        "shii-mechanism-20261014"
+      ],
+      "comparison": {
+        "function": "Existing wood-primary Japanese Shii, yield=42 timber",
+        "historical_fit": "Required Japanese native forest",
+        "dependencies": "One-way mandatory Environment dependency already approved",
+        "retention": "100 percent Shii vegetation/tree/wood preserved",
+        "progression_balance": "No timber drop, growth, planting, map distribution rebalances permitted",
+        "reuse": "Patch only optional harvest component; never change wood primary",
+        "maintenance_license": "Owned by Environment; Foraging adds only collection logic"
+      },
+      "outcome": "prior_art_only"
+    },
+    {
+      "name": "VPE 1.6/More Plants and VEF DualCropExtension",
+      "ecosystem": "ve",
+      "version": "1.6 actual XML and VEF source",
+      "evidence": [
+        "shii-mechanism-20261014"
+      ],
+      "comparison": {
+        "function": "Fruit-primary renewable orchards; shared PlantCollected secondary output",
+        "historical_fit": "Generic horticulture rather than Japanese established timber Shii",
+        "dependencies": "Harmony+VEF for fruit stack",
+        "retention": "Most orchard Defs are out of Foraging scope",
+        "progression_balance": "Cannot separate wood chopping from nut picking on wood-primary tree",
+        "reuse": "No direct use; reference only",
+        "maintenance_license": "VE/VEF owners retain rights and maintenance"
+      },
+      "outcome": "prior_art_only"
+    },
+    {
+      "name": "Vivi Race 1.6 living Plant gathering job and cooldown",
+      "ecosystem": "non_ve",
+      "version": "1.6 actual XML, master C# source 2026-10-14",
+      "evidence": [
+        "shii-mechanism-20261014"
+      ],
+      "comparison": {
+        "function": "Actual separate tree-targeted JobDriver and Scribe-serialized cooldown, for tree propolis",
+        "historical_fit": "Generic mechanism fits, but race/magic/bee elements do not",
+        "dependencies": "Mandatory Biotech+Harmony+race and gathering bench inappropriate",
+        "retention": "Retaining Vivi content would introduce large unrelated systems",
+        "progression_balance": "A no-bench lean custom mechanism preserves separate gathering while limiting resource outputs",
+        "reuse": "Mechanical source precedent only; implement original AMJ code with no copying",
+        "maintenance_license": "No LICENSE/COPYING found in inspected repo; cannot copy source/graphics, maintenance outside AMJ"
+      },
+      "outcome": "prior_art_only"
+    },
+    {
+      "name": "More Tree Products and Bunny Framework",
+      "ecosystem": "non_ve",
+      "version": "Workshop 1.6 listing 2026",
+      "evidence": [
+        "shii-mechanism-20261014"
+      ],
+      "comparison": {
+        "function": "Oak acorns and other drops added when tree is destroyed",
+        "historical_fit": "Tree byproducts relevant but on-cut behavior different",
+        "dependencies": "Framework external dependency for on-destruction rewards",
+        "retention": "Original timber maintained",
+        "progression_balance": "Nut only when cutting fails standing-tree survival test",
+        "reuse": "Reference only, no dependency",
+        "maintenance_license": "Current product discontinued; source/output not loaded in AMJ"
+      },
+      "outcome": "prior_art_only"
+    },
+    {
+      "name": "VV New Harvest Trees/VGP/EW2 candidates",
+      "ecosystem": "non_ve",
+      "version": "VV public author 2026-10-13 / VGP 1.6 log XML / EW2 2026 public page",
+      "evidence": [
+        "shii-mechanism-20261014"
+      ],
+      "comparison": {
+        "function": "Fruit-primary regrowth and wood processing, not advertised targeted independent nut collection",
+        "historical_fit": "General fruit farms/chestnut content overlap only future species",
+        "dependencies": "No reasonable mandatory dependencies for Shii mechanism",
+        "retention": "Would introduce significant unrelated fruit/processing content",
+        "progression_balance": "Replacing wood-primary Shii not acceptable without disproven compatibility",
+        "reuse": "Candidate for separate optional coexistence; not present Shii solution",
+        "maintenance_license": "Raw VV Trees/EW2 source not retrieved; inability documented, no absence claimed"
+      },
+      "outcome": "prior_art_only"
+    }
+  ],
+  "decision": {
+    "kind": "independent",
+    "rationale": "The feature is not another orchard or felled-tree loot. The required second tree-preserving action is incompatible with native shared PlantCollected/fruit-primary and on-destruction frameworks. Vivi demonstrates technical feasibility but requires unrelated race/DLC/Harmony and no source reuse permission. Minimal independent AMJ-original per-tree Job/save path preserves Environment timber and optional MO and adds no artificial gather bench. The decision authorizes only mechanism code and its static checks; exact gameplay output and runtime release require separate accepted specifications and tests.",
+    "specification": "Docs/Design.md",
+    "independent_gap": "No directly comparable viable lightweight independently targetable, persistent living-tree collection on existing wood-primary AMJE Shii without changing original timber harvest or introducing unrelated mandatory content."
+  },
+  "unresolved": []
+}
