@@ -52,3 +52,9 @@ Evaluate function overlap, historical fit, dependency footprint, retention, prog
 5. This source audit **does not** settle the 1.6 loaded `TreeBase` inheritance, any MO Harmony wood overrides, VE fruit-tree Defs, current More Mushrooms/Famine Food, harvest quantities, regrowth timing, seasonal control, visual coverage, historical species acceptance or release compatibility.
 
 **Decision remains HOLD**: no `status=ready` independent-implementation record, no gameplay Def, no Job, no packaged Mod, no RimWorld/Pickle/RimTest PASS. The dependency on Environment remains a separate already-approved author decision.
+
+## 2026-10-14 — current fruit/wood source delta and opt-in research probe
+
+[Scoped direct-source comparison](TreeNutMechanismAudit-20261014.md) documents newly inspected VPE 1.6 actual fruit-tree XML (3 named fruit-primary/regrowing TreeDefs), VEF secondary-product callback, VPE mushroom XML, author-supplied MO 1.6 fruit trees, Environment wood-primary inherited trees, and named non-VE alternatives with honest source/runtime limitations. [Test contract](../Testing/TreeProductCollectionContract.md) enumerates F01–F14, each with its specification premise; **all native scenarios are NOT RUN**, not PASS. The opt-in [XML evidence probe](../../Tests/Research/audit_tree_harvest_sources.py) checks real source inputs for drift, but does not test gameplay or infer inherited core yield from a standalone XML file.
+
+**Decision stays HOLD:** successor non-VE fruit/wood code, More Mushrooms/Famine Food current Defs, direct native 1.6/1.7 job behavior and loaded Environment+MO wood-chain cannot yet be certified. A VPE fruit-primary tree and a VEF shared-callback second output are not demonstrated solutions for independent nut gathering from unchanged timber trees. Do not add playable Foraging Defs, custom jobs, Harmony, a Workshop packageId or food/season numbers based on this research alone.
