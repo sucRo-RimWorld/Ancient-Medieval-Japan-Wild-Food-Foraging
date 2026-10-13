@@ -58,3 +58,25 @@ Evaluate function overlap, historical fit, dependency footprint, retention, prog
 [Scoped direct-source comparison](TreeNutMechanismAudit-20261014.md) documents newly inspected VPE 1.6 actual fruit-tree XML (3 named fruit-primary/regrowing TreeDefs), VEF secondary-product callback, VPE mushroom XML, author-supplied MO 1.6 fruit trees, Environment wood-primary inherited trees, and named non-VE alternatives with honest source/runtime limitations. [Test contract](../Testing/TreeProductCollectionContract.md) enumerates F01–F14, each with its specification premise; **all native scenarios are NOT RUN**, not PASS. The opt-in [XML evidence probe](../../Tests/Research/audit_tree_harvest_sources.py) checks real source inputs for drift, but does not test gameplay or infer inherited core yield from a standalone XML file.
 
 **Decision stays HOLD:** successor non-VE fruit/wood code, More Mushrooms/Famine Food current Defs, direct native 1.6/1.7 job behavior and loaded Environment+MO wood-chain cannot yet be certified. A VPE fruit-primary tree and a VEF shared-callback second output are not demonstrated solutions for independent nut gathering from unchanged timber trees. Do not add playable Foraging Defs, custom jobs, Harmony, a Workshop packageId or food/season numbers based on this research alone.
+
+## 2026-10-14 — author-supplied MO 1.6 fruit-tree felling path (source-only)
+
+**Question:** Does MO already separate edible-fruit collection from timber felling on the *same* tree, so its implementation can directly serve Environment's existing wood-primary Sudajii?
+
+**Exact inspected input:** author-supplied `3219596926.zip`, SHA-256 `6ed379d7c400db43b3af2a9a7fd6203f7f7e99ca1a670d36b0f73fd1adccc9e3`; internal `3219596926/1.6/Defs/ThingDefs_Plants/Plants_Cultivated_Farm.xml`, SHA-256 `f9a0b06fbb285063b3e6c79747483ed80e3590fcc185f91f350a58f3700d3f24`. Examined its 1.6 `Patches/` XML including `Patches/ToggleOptions/MOSetting_WoodChain.xml`. The prior 2026-10-10 native RimWorld 1.6 `JobDriver_PlantWork`/`JobDriver_PlantCut` source observation is reused; **the RimWorld game was not launched**, and the installed 1.6 game DLL was not decompiled anew.
+
+| MO ThingDef | Inherited parent / primary item | Explicit normal harvest settings | Other explicitly defined harvest product |
+| --- | --- | --- | --- |
+| `DankPyon_Tree_Apple` | `TreeBase`, `DankPyon_RawApples` | `Standard`, yield **20**, regrow at `0.30` | none |
+| `DankPyon_Tree_Lemon` | `TreeBase`, `DankPyon_RawLemons` | `Standard`, yield **12**, regrow at `0.30` | none |
+| `DankPyon_Tree_Mulberry` | `TreeBase`, `DankPyon_RawMulberry` | `Standard`, yield **6**, regrow at `0.30` | `MedievalOverhaul.Plant_SecondaryDrop` + `SecondaryPlantDropExtension` points to **`DankPyon_Silkworm`**, not wood |
+
+**Additional static findings:**
+
+- None of these three fruit-tree ThingDefs declares `butcherProducts`, an additional wood `harvestedThingDef`, or a dedicated fruit/wood job.
+- No `1.6/Patches/*.xml` under the supplied MO archive targets these three specific fruit-tree DefNames.
+- The WoodChain active branch replaces **existing `WoodLog` primary harvest tags** using XPath `Defs/ThingDef/plant/harvestedThingDef[text()="WoodLog"]` → `DankPyon_RawWood`; the fruit-primary settings do **not** match. The inactive branch includes wood/material adjustments but supplies no fruit-specific wood product.
+- Public [MO 1.5 `Plant_SecondaryDrop` source](https://github.com/SirLalaPyon/MedievalOverhaul/blob/master/1.5/Source/MedievalOverhaul/Medieval%20Overhaul/ThingClasses/Plant_SecondaryDrop.cs) shows the optional secondary item emitted from `PlantCollected`. That is a **previous-version implementation reference**; the supplied 1.6 compiled `MedievalOverhaul.dll` method was not disassembled or executed here. It does **not** establish a separate timber-only output channel.
+- With the previously inspected 1.6 shared primary-item plant-work path, **a mature MO fruit tree's cutting job is expected to emit its fruit as the primary product, then remove the tree; no timber drop is established**. This is a **source-derived prediction**, not a witnessed native-game inventory/drop result. An unseen runtime override or other-mod patch could alter it.
+
+**Decision for AMJ:** MO offers **regrowing fruit-primary trees**, not a verified reusable `gather nuts separately / fell for preserved timber` solution on Environment-owned Shii/Beech. Preserve the Environment trees' existing wood-primary identity, values and MO timber chain; **do not** swap their `harvestedThingDef` to nuts based on this prior art. Native MO fruit-tree *gather-vs-cut* baseline and the Environment Shii/Beech *cut with WoodChain on/off* must still be checked independently (see F03 and F04). This bounded MO check does not close the VE/non-VE prior-art entry gate or authorize new production Jobs, fruit output, balance or release.
