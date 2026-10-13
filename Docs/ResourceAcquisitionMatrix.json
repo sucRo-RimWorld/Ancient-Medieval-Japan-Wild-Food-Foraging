@@ -1,0 +1,280 @@
+{
+  "schema_version": 1,
+  "scope": "12 adopted edible natural objects; candidate acquisition/habitat/processing classification. No game activation/numeric balancing.",
+  "sourceOfAdoption": "Docs/ResourceAdoption-v1.md",
+  "environmentEvidence": {
+    "ownerRepo": "sucRo-RimWorld/Ancient-Medieval-Japan-Environment",
+    "biomes": "Defs/BiomeDefs/AMJ_Biomes.xml",
+    "biomeGitBlob": "f481efbec55ff28291d356fc735e4475920cd169",
+    "plants": "Defs/ThingDefs_Plants/AMJ_WildPlants.xml",
+    "plantGitBlob": "490f04c9b8b2aeb51b6ca63a0226be05a573b49b",
+    "verifiedFacts": [
+      "AMJ_WarmTemperateForest includes AMJ_Tree_Shii=2.55",
+      "AMJ_CoolTemperateForest includes AMJ_Tree_Beech=1.8 and generic Plant_TreePine=0.35",
+      "No AMJE-specific Akamatsu ThingDef in the reviewed plants XML",
+      "TemperateSwamp and ColdBog remain Vanilla-owned wetland BiomeDefs; only some climate/ecology patches applied",
+      "BiomeDef wildPlantRegrowDays is not per-tree nut cooldown or per-fungus harvest interval"
+    ]
+  },
+  "selectionRules": [
+    "Another Mod providing the species never limits its Foraging adoption.",
+    "Environment owns baseline Shii/Beech and BiomeDefs; Foraging owns new edible species and their conditional biome patches.",
+    "Candidate biome does not guarantee spawn, seasonal availability or actual ecological substrate.",
+    "Unprocessed risky wild foods may not become unconditional safe meals.",
+    "Mushrooms are naturally occurring fruiting bodies; deliberate spawn into unspecified forests or mushroom farming is not approved.",
+    "Technical reuse requires further verified native 1.6 behavior; Shii inert prototype is not generic harvest code."
+  ],
+  "entries": [
+    {
+      "id": "WF-N01",
+      "name": "スダジイの実",
+      "category": "N",
+      "collectionMode": "tree_secondary",
+      "existingEnvironmentPlantDef": "AMJ_Tree_Shii",
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest"
+      ],
+      "habitatCondition": "照葉樹林。EnvironmentのShii木が既に出現するので追加樹木を置かない",
+      "collectionBehaviorCandidate": "野生の既存樹木を残し種実のみ採集。伐採WoodLogと別処理",
+      "preparationGate": "種実の殻・安全な可食部位を後続設計で定義",
+      "notes": "既存Shiiの木材収量と生育・伐採に変更なし",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-N02",
+      "name": "クリの実",
+      "category": "N",
+      "collectionMode": "tree_secondary",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "山麓・林縁等の野生クリ林。野生分布の地域・標高を次工程で選別",
+      "collectionBehaviorCandidate": "Foraging所有の野生クリの木を残して実のみ採集。栽培果樹システムとは分離",
+      "preparationGate": "毬・殻と可食果実の区別、加熱処理のルールは未決",
+      "notes": "新設樹木DefはForaging所有",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-N03",
+      "name": "オニグルミ系の実",
+      "category": "N",
+      "collectionMode": "tree_secondary",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "谷筋・河畔の適湿地を優先する。単なるBiome全域一様分布は不可",
+      "collectionBehaviorCandidate": "Foraging所有の野生クルミ樹木を残して堅果採集",
+      "preparationGate": "外果皮・硬殻を除去して可食核を得る。単体未処理堅果をそのまま食品とみなさない",
+      "notes": "現代種オニグルミへの古代胡桃名の同定はゲーム上の代表",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-N04",
+      "name": "カヤの実",
+      "category": "N",
+      "collectionMode": "tree_secondary",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "暖温帯～温帯の山地林。冷温帯への導入可否は局所温度条件で限定",
+      "collectionBehaviorCandidate": "Foraging所有のカヤ樹木を残して種実採集",
+      "preparationGate": "外側の皮・殻・渋皮などの除去／焙煎を含む食用化検討。無条件の生食不可",
+      "notes": "1259年宮廷利用記録と野生での自家採集の直接証拠を混同しない",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-G01",
+      "name": "ワラビの若芽",
+      "category": "G",
+      "collectionMode": "shoot_gather",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "森林内部より林縁・伐採跡・日当たりのよい開けた場所を優先。Biomeのみで判定不足",
+      "collectionBehaviorCandidate": "若芽だけ収穫する。地下茎は残る実態を重視し、再生/季節は新規検証",
+      "preparationGate": "プタキロサイド等への適切なアク抜きが必要。生の若芽を安全食材にしない",
+      "notes": "澱粉（ワラビ粉）は未採用",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-G02",
+      "name": "ゼンマイの若芽",
+      "category": "G",
+      "collectionMode": "shoot_gather",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "湿り気のある谷・山地斜面・林床。湿地Biomeも候補だが採用率未決",
+      "collectionBehaviorCandidate": "若芽を採り、株の再生/季節を表現。植物破壊は標準処理との検証後決める",
+      "preparationGate": "適切なアク抜き/加熱を必要とする。乾燥ゼンマイはPreservation別機能",
+      "notes": "古語薇・蕨と現代の種名を完全一致させない",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-G03",
+      "name": "フキの葉柄",
+      "category": "G",
+      "collectionMode": "shoot_gather",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest",
+        "TemperateSwamp"
+      ],
+      "habitatCondition": "沢沿い・林縁・湿った山裾。TemperateSwampはAMJEが保持するVanilla湿地Def",
+      "collectionBehaviorCandidate": "葉柄のみ採り、地下の根茎は資源母体として残す。蕗の薹は採集対象外",
+      "preparationGate": "ピロリジジンアルカロイド：茹でこぼし/水さらし等のアク抜き必須。単純加熱だけの安全食材化不可",
+      "notes": "中世の茎煮食と現代の毒素除去の区別を保持",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-G04",
+      "name": "ウドの若芽・若茎",
+      "category": "G",
+      "collectionMode": "shoot_gather",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "山裾・林縁・半日陰の斜面。栽培軟白ウドは対象外",
+      "collectionBehaviorCandidate": "野生株の芽/茎だけ採り、再生・採集季節は別途決定",
+      "preparationGate": "可食部位の確実な同定と食用準備を検討。自動的な生食許可は未確定",
+      "notes": "古文書の植物名はあるが当時の若芽調理法は推定",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-R01",
+      "name": "自然薯の地下部",
+      "category": "R",
+      "collectionMode": "underground_dig",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "山地林縁・樹林下の深い土壌、地下部の生育に適した地表。ThinSoil/Gravelでの可否は未承認",
+      "collectionBehaviorCandidate": "地下部を掘り取る。資源本体の除去または再生は調査後に決定、無限連続採集は禁止",
+      "preparationGate": "地下部を採集原料とし、食事への投入/加熱/下処理は別設計",
+      "notes": "栽培された畑作ヤマイモは本Mod対象外",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-F01",
+      "name": "ヒラタケの子実体",
+      "category": "F",
+      "collectionMode": "fungal_fruiting_body",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "広葉樹の枯木/朽木基質。環境Biomeの名前だけでランダム発生させない。基質取得法が未設計",
+      "collectionBehaviorCandidate": "自然の子実体を採取する。樹木の伐採や木材収穫を起動しない",
+      "preparationGate": "確実に同定した食用菌を適切に加熱して食べる。生の自然物を無条件に食事化しない",
+      "notes": "菌糸体／基質の破壊挙動は未決",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-F02",
+      "name": "マツタケの子実体",
+      "category": "F",
+      "collectionMode": "fungal_fruiting_body",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "生きた松類の根との菌根共生が必要。現行CoolにはPlant_TreePineがあるがAMJアカマツDefはない。Vanilla Pineの宿主としての採用は未承認",
+      "collectionBehaviorCandidate": "自然の子実体のみ収穫。木・根の伐採や採掘は起動しない",
+      "preparationGate": "食用として確実に同定し適切に調理。加熱方式/栄養数値は未決",
+      "notes": "宿主植物Def・距離・自然出現は生態設計が終わるまで実装保留",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    },
+    {
+      "id": "WF-F03",
+      "name": "野生シイタケの子実体",
+      "category": "F",
+      "collectionMode": "fungal_fruiting_body",
+      "existingEnvironmentPlantDef": null,
+      "candidateBiomes": [
+        "AMJ_WarmTemperateForest",
+        "AMJ_CoolTemperateForest"
+      ],
+      "habitatCondition": "広葉樹朽木・倒木。腐生性菌でマツタケのような生根依存とは分ける。木材物理基質表現は未実装",
+      "collectionBehaviorCandidate": "子実体を採集する。自然林での野生発生のみ、菌床/原木栽培は対象外",
+      "preparationGate": "十分な加熱が必要。生/半生のまま安全食事と扱わない",
+      "notes": "1465年献上記録は採集法/人工栽培の証明ではない",
+      "implementationStatus": "design_candidate_only",
+      "harvestQuantity": null,
+      "workTicks": null,
+      "regrowthTicks": null,
+      "seasonWindow": null,
+      "wildPlantCommonality": null
+    }
+  ]
+}
