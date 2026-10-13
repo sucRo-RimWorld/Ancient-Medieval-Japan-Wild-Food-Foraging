@@ -10,6 +10,10 @@ This repository owns **edible wild nature as content and gameplay** for Ancient 
 
 The confirmed design is in Docs/Design.md; Project retains only shared architecture and ownership pointers. Cross-repository handoff/status belongs in main:Docs/Coordination.md of the actual owner, never via the user.
 
+## Resource selection is independent of other Mods
+- **Author-confirmed 2026-10-14:** Foraging's objective is the historically appropriate collection of wild foods in ancient-to-medieval Japan. Individual edible species are selected by Japan-period use, natural habitat, edible part, safety and fit with the forest/foothill gathering theme. **Another Mod containing the same tree, nut, green or mushroom never excludes, defers or downgrades its adoption in Foraging.** There is no project-design requirement to delegate its food list to generic fruit/mushroom Mods.
+- VE/non-VE/MO source comparisons remain relevant to **technical implementation reuse** under Project's implementation-entry rules. Optional co-install compatibility (duplicate resources/spawns, XML conflicts) is a **later optional compatibility test**, not a precondition for accepting species or implementing the independently-owned core Foraging content. Never silently convert a missing third-party XML checkout into an adoption HOLD.
+
 ## Entry and evidence
 - **Production implementation is HOLD** until VE **and non-VE**, Vanilla, MO and AMJ-owner actual-source comparison establishes an unresolved need and a validated Project-format implementation decision. Prior-art research and disposable tests may continue.
 - Existing AMJE Sudajii/Beech harvest values are wood-related. Do not reinterpret them as edible nuts or replace wood-cut yields without checking the actual loaded semantics.
