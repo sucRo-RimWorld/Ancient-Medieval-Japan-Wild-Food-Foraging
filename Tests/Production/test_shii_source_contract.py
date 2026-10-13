@@ -45,6 +45,7 @@ class TestShiiSourceContract(unittest.TestCase):
     def test_workgiver_is_limited_to_designated_shii(self):
         content = read("WorkGiver_GatherShiiNuts.cs")
         for token in ['DesignationOn(thing, gather)', 'thing.def.defName != "AMJ_Tree_Shii"',
+                      'DesignationDefOf.CutPlant', 'DesignationDefOf.HarvestPlant',
                       'pawn.CanReserveAndReach', 'state.CanGather()', 'JobMaker.MakeJob']:
             self.assertIn(token, content)
 
