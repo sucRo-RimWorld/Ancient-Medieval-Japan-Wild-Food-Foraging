@@ -36,7 +36,7 @@ namespace AMJ.WildFoodForaging
         public bool CanGather()
         {
             if (!(parent is Plant plant) || !plant.Spawned || plant.Destroyed ||
-                plant.IsBurning() || plant.Blighted)
+                plant.IsBurning() || plant.Blighted || plant.LifeStage != PlantLifeStage.Mature)
                 return false;
 
             if (plant.def.defName != "AMJ_Tree_Shii" ||
@@ -46,7 +46,8 @@ namespace AMJ.WildFoodForaging
 
             // No reinterpretation of existing harvestYield=42 timber as food.
             if (Props.productDef == null || Props.yieldCount <= 0 ||
-                Props.cooldownTicks <= 0 || Props.workTicks <= 0)
+                Props.cooldownTicks <= 0 || Props.workTicks <= 0 ||
+                Props.yieldCount > Props.productDef.stackLimit)
                 return false;
 
             return !hasGathered ||
