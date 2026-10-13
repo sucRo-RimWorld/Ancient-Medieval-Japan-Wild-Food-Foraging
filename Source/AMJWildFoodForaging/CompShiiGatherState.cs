@@ -39,7 +39,9 @@ namespace AMJ.WildFoodForaging
                 plant.IsBurning() || plant.Blighted)
                 return false;
 
-            if (plant.def.defName != "AMJ_Tree_Shii")
+            if (plant.def.defName != "AMJ_Tree_Shii" ||
+                plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.CutPlant) != null ||
+                plant.Map.designationManager.DesignationOn(plant, DesignationDefOf.HarvestPlant) != null)
                 return false;
 
             // No reinterpretation of existing harvestYield=42 timber as food.
