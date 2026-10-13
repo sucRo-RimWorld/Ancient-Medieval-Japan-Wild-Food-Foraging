@@ -2,6 +2,8 @@
 
 **State:** MECHANISM SOURCE STAGED BUT INACTIVE; no compiled assembly, gameplay resource, linked Defs, accepted numeric specification or completed runtime checks. The narrowly scoped [mechanism entry decision](../Research/ShiiMechanismDecision.json) and [original C# sources](../../Source/AMJWildFoodForaging/README.md) exist. This describes **what would be tested** before making a claim; none of these cases has been executed in RimWorld. Tree collection, species, yields, seasons and Defs remain unapproved until the entry decision and owning Design specify them.
 
+**Prerequisite — adoption before technical activation:** This F01–F14 contract tests only an already-selected natural edible product and its accepted acquisition mechanism. The [resource selection audit](../Research/WildResourceSelection-20261014.md) must first identify the first-round adopted tree nuts, greens, fungi and wild tubers/roots (or document nonadoption), each with the edible part, Japan-period evidence, existing Mod overlaps and processing conditions. **Shii source tests cannot decide the Mod-wide natural product list.** Until resource selection is confirmed, none of these F-cases is the next immediate milestone. Do not invent numerical expected values to run the cases prematurely.
+
 **Dependencies:** every game profile must have Environment loaded first, not just an optional fallback. Foraging must not duplicate Environment PlantDefs. MO and CCTO are optional and independent profile axes. Use the actual source/provider fingerprints, full Player.log and ERROR-zero gates.
 
 | ID | Test item | Intended specification premise and required observation |

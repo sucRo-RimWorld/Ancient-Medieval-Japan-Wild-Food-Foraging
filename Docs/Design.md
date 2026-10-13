@@ -2,7 +2,7 @@
 
 **Author-confirmed name (2026-10-08):** Ancient & Medieval Japan - Wild Food Foraging / 中世日本 - 山野採集  
 **Target:** RimWorld 1.6  
-**Status:** Project design promoted to a dedicated owner on 2026-10-10; **specification only, no gameplay implementation or approved balance values**.
+**Status:** Owner design with **inactive Shii-specific C# mechanism source only**; no playable Mod, adopted complete natural-resource list, or approved balance values.
 
 ## 1. Purpose and hard boundary
 
@@ -35,7 +35,11 @@ Represent **edible wild plants and forest foods** accessible to people living ne
 - Prefer **normal harvest designation and existing Plant harvest jobs** when feasible. New interactions, additional harvest JobDefs or C# are not pre-authorized; prove the missing native behavior first.
 - No initial world-map gathering expedition site, abstract production building or infinite spawn mechanic.
 
-## 4. Species / food candidate ledger (not approved Defs)
+## 4. Wild natural-resource selection (before collection mechanisms)
+
+**Current highest-priority task: decide which natural products the Mod will actually gather.** Select natural objects and their *edible parts* across tree nuts, greens/new shoots, fungi and wild roots/tubers before generalizing Jobs or adding playable Defs. The [first-round resource comparison](Research/WildResourceSelection-20261014.md) records provisional Japanese candidates, period/habitat evidence, required processing and Vanilla/MO/VE/non-VE overlap. It is **not a confirmed adoption or a new plant-authoring request**. Historiography, actual prior-art Defs and Ecology/Environment ownership must be checked for each target. Deciding that a species exists is distinct from adopting its nut/shoot/fruiting body/root as an edible game resource.
+
+### Existing candidate ledger (not approved Defs)
 
 | Candidate | Evidence from prior Project design | Current decision |
 | --- | --- | --- |
@@ -51,7 +55,9 @@ Represent **edible wild plants and forest foods** accessible to people living ne
 
 Existing AMJE `AMJ_Tree_Shii` and `AMJ_Tree_Beech` are currently **wood-producing trees**, not edible nut providers. Their `harvestYield=42/40` are not food values. Refer to [Environment AMJ_WildPlants.xml](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Defs/ThingDefs_Plants/AMJ_WildPlants.xml).
 
-## 5. First technical decision: reusable tree-nut collection without cutting trees
+## 5. Prior technical research: tree-nut collection without cutting trees (deferred after natural-resource selection)
+
+**Priority correction (2026-10-14, author direction):** The first Shii test is **not** the first project milestone. Before activating or generalizing its specialized job, **freeze a first-round adopted-resource list** with each resource's species/edible part, ancient-to-medieval evidence, Environment ownership, current Mod overlaps, and food safety/processing needs. Only then classify each accepted item as native crop harvest, tree-preserving side harvest, dig-up, or fungal collection. Reuse a shared mechanism only where actual selected items need the same behavior. The Shii-targeted C# source stays **inert/not shipped** until the resource list and first item rules are accepted. Additional nut trees, mountain greens and mushrooms must not be excluded merely because Shii was technically examined first.
 
 **1.6 code inspection result (2026-10-10):** The 1.6 public decompiled `PlantCollected` path already supports a **non-destroying ordinary harvest** when `harvestAfterGrowth > 0`, but the plant's **primary harvestedThingDef is shared by harvest and cutting**. `JobDriver_PlantCut` also explicitly destroys its plant target. Thus merely switching the existing Environment `AMJ_Tree_Shii` to a fruit output, making its existing wood yield repeatable, or attaching an unqualified dual-output extension does **not** establish **separate edible-nut picking while preserving woodcut yields**. The actual MO 1.6 fruit-tree XML demonstrates regrowing primary fruit harvesting, **not** a separate timber output: apple/lemon/mulberry have only primary fruit (20/12/6), `harvestAfterGrowth=0.30`, and no timber-yield extension; mulberry's additional product is silkworm. MO's WoodChain setting targets `WoodLog` primary yields rather than these fruit Defs. The source therefore **predicts fruit rather than timber from mature fruit-tree cutting**, although the actual loaded MO cut/drop result has not been executed. This does not provide the required Shii dual-use timber contract. [MO 1.6 source audit](Research/ExistingModAudit.md#2026-10-14--author-supplied-mo-16-fruit-tree-felling-path-source-only). Read [actual source evidence and restrictions](Research/ExistingModAudit.md#2026-10-10--16-native-harvestwoodcut-source-audit-code-level-not-runtime-pass).
 
@@ -73,7 +79,7 @@ Determine in order: original native behavior (source checked, loaded game untest
 
 ## 6. Entry tests and release gates
 
-1. [Existing-Mod Audit](Research/ExistingModAudit.md): inspect actual XML/code for Vanilla/MO, VE and non-VE, including More Mushrooms/Famine Food; record versions, licensing, dependency cost, retained content, and exact mechanical overlap. A Project-format `status=ready` JSON is **not present** because this audit is open. [Entry format](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Research/ExistingModAudit.md).
+1. **Resource-selection gate first:** Complete [the first-round natural-resource audit](Research/WildResourceSelection-20261014.md) and explicitly record adopted, optional coexistence, deferred and excluded natural items. Each adopted entry needs species/edible part, period evidence, habitat, required processing and current Vanilla/MO/VE/non-VE overlap. The separate [Shii mechanism-only `status=ready` decision](Research/ShiiMechanismDecision.json) does **not** approve a resource list, nutrient value or gameplay activation. For each further item/subsystem, inspect actual sources and use the Project implementation-entry format. More Mushrooms/Famine Food remain open for fungi/food, not a reason to silently approve or reject them. [Entry format](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/blob/main/Docs/Research/ExistingModAudit.md).
 2. The actual native harvest/cut workflow must prove that gathering does **not** consume the tree unintentionally, replace timber yields, or double-reward wood and food. Environment+Vanilla and Environment+MO cases (with optional CCTO profiles) are separate checks; an Environment-free Foraging profile is no longer in scope.
 3. Species additions and existing-save compatibility follow the Environment [old-save fruit-tree test specification](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/GoldenPaths/PlantSowingTests.md): existing-AMJE save → add Foraging and/or upgrade AMJE as applicable → **natural** existing-map appearance for added wild plants → mature real harvest and (where sowable) research-gated sow Job → save/reload, complete logs, ERROR zero. Foraging food extraction from trees already on the map and newly added AMJE wild plant spawning must be tested as distinct scenarios. Forced-spawn-only tests do not clear natural-spawning claims.
 4. Include Environment in **every** runtime profile; distinguish Environment+Vanilla, Environment+MO, Environment+CCTO and Environment+MO+CCTO; do not infer an unrun profile PASS from XML, mocks or historical logs.
