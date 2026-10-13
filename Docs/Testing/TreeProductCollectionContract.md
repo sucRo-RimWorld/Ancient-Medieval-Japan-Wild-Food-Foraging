@@ -25,7 +25,7 @@
 
 ## Deliberately excluded from the initial tree mechanism
 
-**F01–F14 only cover the Shii-specific gathering mechanism; they do not test separately adopted Kuri/walnut/Kaya/Warabi/Zenmai/Fuki/Udo/Jinenjo/Hiratake/Matsutake/Shiitake content.** Foraging-owned item-specific checks must separately verify Fuki stalk de-bittering (no untreated raw food), Kaya seed processing, wild Shiitake habitat and adequate cooking, and Udo wild shoots rather than later soft-forcing cultivation. No new hunting, yam recipes, preservation, coastal gathering or world-map excursions. No fake gathering structure or global wood-yield rebalance. No speculative quantity, regrowth, season or duration assertions until approved.
+**F01–F14 cover ONLY the Shii-specific standing-tree mechanism.** The complete twelve-resource acquisition and safe-food/habitat tests are [AC01–AC17](ResourceAcquisitionContract.md) and are also **all NOT RUN**. Other eleven foods require separate natural spawn, collection and preparation acceptance; Shii F04 cannot establish their runtime correctness. Foraging-owned item-specific checks must separately verify Fuki stalk de-bittering (no untreated raw food), Kaya seed processing, wild Shiitake habitat and adequate cooking, and Udo wild shoots rather than later soft-forcing cultivation. No new hunting, yam recipes, preservation, coastal gathering or world-map excursions. No fake gathering structure or global wood-yield rebalance. No speculative quantity, regrowth, season or duration assertions until approved.
 
 ## Evidence and status
 
