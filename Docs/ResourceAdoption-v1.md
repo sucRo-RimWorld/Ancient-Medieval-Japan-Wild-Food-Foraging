@@ -81,6 +81,7 @@ R01–R07は**ドキュメントの採否確認項目**で、RimWorldゲーム�
 7. [農林水産省「知らない野草・山菜は採らない、食べない」](https://www.maff.go.jp/j/syouan/nouan/rinsanbutsu/natural_toxins.html) — 自然植物/山菜の危険性・安全なアク抜き。
 8. [山梨県埋蔵文化財センター「トチの実」](https://www.pref.yamanashi.jp/maizou-bnk/topics/401_500/0459.html) — トチの実は有毒成分/強いアク、食用には前処理必須、縄文史料の限定性。
 9. [農林水産省「木の実のお菓子」](https://www.maff.go.jp/j/keikaku/syokubunka/traditional-foods/menu/kinomi_okasi.html) —『延喜式』栗と後世の菓子文化は時代別に分ける。
-10. [2026-10-14 従前比較](WildResourceSelection-20261014.md)、[果樹既存Mod監査](AdditionalFruitTreeModAudit-20261014.md)、[樹木採集機構先行実装](TreeNutMechanismAudit-20261014.md)。
+10. [『和名類聚抄』の椎子「和名之比」の紹介（引用部分は古辞書）](https://jpnhist.com/archives/3043) — 「椎子」という歴史名称は存在するが、紹介サイトの生活実態・味覚・頻度に関する推測は史料事実とは扱わず、**スダジイ単一種の同定や当時の普遍的生食習慣の根拠にはしない**。 [古辞書研究論文](https://www.jstage.jst.go.jp/article/jadh/4/1/4_6/_html/-char/ja)は古典データセットの成立・限界に関する参考。
+11. [2026-10-14 従前比較](WildResourceSelection-20261014.md)、[果樹既存Mod監査](AdditionalFruitTreeModAudit-20261014.md)、[樹木採集機構先行実装](TreeNutMechanismAudit-20261014.md)。
 
 **史料の証拠強度:** 学術解説/農水省の歴史記述と直接校訂史料は区別する。日本に生えること、名称が辞書に載ること、後世の民俗で食べられることは、古代～中世のどの地域/社会層も同じ方法で採食した証明とはならない。史料解釈に幅がある箇所は以上の表に注記し、後から詳細歴史研究で訂正可能にする。
