@@ -6,7 +6,7 @@
 3. Read the local [Design](Docs/Design.md), then the relevant [Existing-Mod Audit](Docs/Research/ExistingModAudit.md) and actual source before implementation.
 
 ## Ownership
-This repository owns **wild edible plant gathering and food-use behavior** for Ancient & Medieval Japan - Wild Food Foraging / 中世日本 - 山野採集. It does not own Environment's natural tree/vegetation identity, biome/world distribution, general agriculture, food preservation, hunting, fishing or coastal gathering.
+This repository owns **edible wild nature as content and gameplay** for Ancient & Medieval Japan - Wild Food Foraging / 中世日本 - 山野採集: newly introduced edible wild tree, herb/green, fungus and tuber/root PlantDefs (where needed), their edible products, plant graphics, biome wildPlants placement patches, gathering and food-use behavior. Its runtime prerequisite is AMJ Environment. **Environment retains its existing Shii/Beech and other baseline landscape/forestry plants and owns biome/climate identities**, so Foraging adds edible gathering to already owned environmental trees via patches without duplicating their PlantDefs. New food-purpose species are **not** implementation requests to Environment. Foraging does not own general agriculture, food preservation, hunting, fishing or coastal gathering.
 
 The confirmed design is in Docs/Design.md; Project retains only shared architecture and ownership pointers. Cross-repository handoff/status belongs in main:Docs/Coordination.md of the actual owner, never via the user.
 
