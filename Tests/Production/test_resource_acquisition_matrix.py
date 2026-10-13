@@ -26,7 +26,7 @@ class ResourceAcquisitionContract(unittest.TestCase):
         cls.adopted_text = ADOPTION.read_text(encoding="utf-8")
 
     def test_all_and_only_adopted_species_are_classified(self):
-        adopted = set(re.findall(r"^\\| (WF-[NGRF]\\d\\d) \\|", self.adopted_text, re.M))
+        adopted = set(re.findall(r"^\| (WF-[NGRF]\d\d) \|", self.adopted_text, re.M))
         self.assertEqual(len(adopted), 12)
         self.assertEqual(len(self.entries), 12)
         self.assertEqual(len(self.by_id), 12)
