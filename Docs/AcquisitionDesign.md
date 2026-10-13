@@ -13,6 +13,23 @@
 
 **原則：** 先に既存のRimWorld XML/Jobを検証し、必要性が立証された部分だけC#を追加する。Vivi Race等の別Modは技術先例であり必須依存/コード流用ではない。既存Modに同じ食用種があるかは**採用対象および基本機能の実装順に無関係**。
 
+## 1.1. 植栽の種別仕様（2026-10-14承認）
+
+**採集対象＝植栽禁止ではない。** 自然発生・野生採集は12資源すべての基本機能とし、植栽は資源の性質に応じて独立判定する。正本の種別値は[ResourceAcquisitionMatrix.json](ResourceAcquisitionMatrix.json)の `plantingPolicy`。以下は**確定した設計上の植栽可否**であり、現行ソースに植え付けJobやThingDefが存在するとの主張ではない。
+
+| 自然物（採用ID） | 植栽方針 | 条件・対象外 |
+| --- | --- | --- |
+| **スダジイ (WF-N01)** | **Environment既存仕様を維持（植林可能）** | `AMJ_Tree_Shii` はEnvironmentのWarmに自然分布。TreeBase由来の `sowTags=Ground`／`sowResearchPrerequisites=TreeSowing`／`mustBeWildToSow=true` と研究・地域制限を変更しない。Foragingは種実採集のみ重畳 |
+| **クリ・クルミ・カヤ (WF-N02/N03/N04)** | **植林可能** | 新しい樹木はForaging所有。Vanilla既存の樹木栽培研究 `TreeSowing` 後に、当該樹種が自然分布する地域に限定して植林できるよう設計。非分布地域へ自由植栽できる仕様は認めない。木を残す種実採集と伐採木材は別 |
+| **ワラビ・ゼンマイ (WF-G01/G02)** | **初期版は野生採集のみ** | 地下茎・シダの胞子繁殖を単純な農作物の種播きに置き換えない。移植や人工栽培は必要性を確認した将来の個別仕様とし、現時点で栽培メニューに表示しない |
+| **フキ・ウド (WF-G03/G04)** | **植栽可能** | 野生採集を基本としつつ、既存の栽培ゾーンによる植え付けを許可。新しい種子アイテム、専用農業設備、軟白ウド栽培、工業的栽培システムは追加しない。採るのはフキ葉柄／ウド若芽・若茎 |
+| **自然薯 (WF-R01)** | **初期版は野生掘り取りのみ** | 新規のヤマイモ栽培作物や農業システムは設けない。地下部の有限な掘り取りと再生を優先し、植え付けは別の作物設計に委ねる |
+| **ヒラタケ・マツタケ・シイタケ (WF-F01/F02/F03)** | **植栽不可** | 野生の子実体だけを採集。栽培ゾーンへの播種、菌床・原木植菌・きのこ栽培研究/設備を追加しない。適正な宿主/朽木基質が必要 |
+
+**現行のEnvironment正本：** [EnvironmentのRegional tree sowing contract](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/Design.md)§Regional tree sowing contract は、既存のShiiの樹木栽培研究/野生分布限定と、植林可能な樹木と高山ハイマツのような非植林木本との区別を規定している。新規のForaging食用樹木についても、その研究・地域制限に**矛盾しない独立Def**を作る。Environment本体や既存の植林候補を勝手に変更せず、Foragingを導入した場合のみ新規食用樹木が正しく候補に加わるようにする。
+
+**実装優先度：** 可否と植栽可能条件の設計は決定したが、実際の植栽メニュー、研究ロック、地域制限、栽培Job、成長/種実採集の接続は**実ゲーム未検証**。クリ/クルミ/カヤ・フキ/ウドの具体的なXMLとソース必要性判定を次工程で行う。植栽を許すことは自動的な種子アイテム追加、無制限の食材産出、耕作/加工システムのMod所有移管を意味しない。
+
 ## 2. Environment実ソースに対する分布・宿主判定
 
 2026-10-14現在のEnvironment mainを直接確認した（`Defs/BiomeDefs/AMJ_Biomes.xml` blob `f481efbec55ff28291d356fc735e4475920cd169`、`Defs/ThingDefs_Plants/AMJ_WildPlants.xml` blob `490f04c9b8b2aeb51b6ca63a0226be05a573b49b`）。
