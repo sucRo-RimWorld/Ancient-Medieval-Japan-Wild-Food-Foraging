@@ -67,10 +67,13 @@ namespace AMJ.WildFoodForaging.NativeTests
             ResearchProjectDef research = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("TreeSowing");
             WorkGiverDef workDef = DefDatabase<WorkGiverDef>.AllDefsListForReading
                 .FirstOrDefault(d => d.giverClass == typeof(WorkGiver_GrowerSow));
-            var work = workDef?.Worker as WorkGiver_GrowerSow;
+            // Use a fresh native WorkGiver for each independent diagnostic grow zone.
+            // A previously-used WorkGiver may retain the last requested sow plant.
+            bool nativeWorkerAvailable = workDef != null &&
+                workDef.Worker is WorkGiver_GrowerSow;
             string[] defs = { "AMJWF_Probe_Kuri", "AMJWF_Probe_Walnut", "AMJWF_Probe_Kaya" };
             var plants = defs.Select(DefDatabase<ThingDef>.GetNamedSilentFail).ToArray();
-            if (pawns.Count != 3 || work == null || research == null ||
+            if (pawns.Count != 3 || !nativeWorkerAvailable || research == null ||
                 plants.Any(p => p?.plant == null))
             {
                 setupFailure = "Native research, pawns, WorkGiver or fixture tree missing";
@@ -111,6 +114,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                     "; initialPlantSkill=" + initialSkill +
                     "; inheritedSowMinSkill=" + naturalRequirement +
                     "; qualifiedPlantSkill=" + skill.Level);
+                WorkGiver_GrowerSow work = new WorkGiver_GrowerSow();
+                work.def = workDef;
                 Job job = null;
                 Zone_Growing acceptedZone = null;
                 IntVec3 selected = IntVec3.Invalid;

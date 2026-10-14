@@ -24,6 +24,8 @@ class TestTreePawnSowingSource(unittest.TestCase):
             "nativeSkillSatisfied.Count == 3",
             "inheritedSowMinSkill=",
             "work.JobOnCell(pawn, cell)",
+            "new WorkGiver_GrowerSow()",
+            "work.def = workDef",
             "offered.def == JobDefOf.Sow",
             "pawn.jobs.StartJob(job, JobCondition.InterruptForced)",
             "Planted(0,", "Planted(1,", "Planted(2,",
