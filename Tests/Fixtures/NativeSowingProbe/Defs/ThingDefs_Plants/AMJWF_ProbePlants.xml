@@ -52,6 +52,10 @@
   <!-- WF-G01; DEVELOPMENT FIXTURE, not final species, wild. -->
   <ThingDef ParentName="AMJWF_WarabiWildTemplate">
     <defName>AMJWF_Probe_Warabi</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Warabi plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -67,6 +71,10 @@
   <!-- WF-G02; DEVELOPMENT FIXTURE, not final species, wild. -->
   <ThingDef ParentName="AMJWF_ZenmaiWildTemplate">
     <defName>AMJWF_Probe_Zenmai</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Zenmai plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -82,6 +90,10 @@
   <!-- WF-G03; DEVELOPMENT FIXTURE, not final species, sowable. -->
   <ThingDef ParentName="AMJWF_FukiSowingTemplate">
     <defName>AMJWF_Probe_Fuki</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Fuki plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -97,6 +109,10 @@
   <!-- WF-G04; DEVELOPMENT FIXTURE, not final species, sowable. -->
   <ThingDef ParentName="AMJWF_UdoSowingTemplate">
     <defName>AMJWF_Probe_Udo</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Udo plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -112,6 +128,10 @@
   <!-- WF-R01; DEVELOPMENT FIXTURE, not final species, wild. -->
   <ThingDef ParentName="AMJWF_JinenjoWildTemplate">
     <defName>AMJWF_Probe_Jinenjo</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Jinenjo plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -127,6 +147,10 @@
   <!-- WF-F01; DEVELOPMENT FIXTURE, not final species, wild. -->
   <ThingDef ParentName="AMJWF_HiratakeWildTemplate">
     <defName>AMJWF_Probe_Hiratake</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Hiratake plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -142,6 +166,10 @@
   <!-- WF-F02; DEVELOPMENT FIXTURE, not final species, wild. -->
   <ThingDef ParentName="AMJWF_MatsutakeWildTemplate">
     <defName>AMJWF_Probe_Matsutake</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Matsutake plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
@@ -157,6 +185,10 @@
   <!-- WF-F03; DEVELOPMENT FIXTURE, not final species, wild. -->
   <ThingDef ParentName="AMJWF_ShiitakeWildTemplate">
     <defName>AMJWF_Probe_Shiitake</defName>
+    <!-- A living plant fixture is not itself edible food; test-only no-nutrition semantics. -->
+    <ingestible>
+      <preferability>NeverForNutrition</preferability>
+    </ingestible>
     <label>DEV ONLY Shiitake plant</label>
     <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
     <selectable>true</selectable>
