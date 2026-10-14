@@ -83,7 +83,9 @@ namespace AMJ.WildFoodForaging.NativeTests
             }
             foreach (Plant candidate in map.listerThings.ThingsOfDef(shii)
                 .OfType<Plant>().Where(p => p.Spawned && !p.Destroyed &&
-                    !p.IsBurning() && !p.Blighted)
+                    !p.IsBurning() && !p.Blighted &&
+                    p.Position.DistanceToSquared(pawn.Position) >= 4 &&
+                    !map.mapPawns.AllPawnsSpawned.Any(other => other.Position == p.Position))
                 .OrderBy(p => p.Position.DistanceToSquared(pawn.Position)))
             {
                 candidate.Growth = 1f; // disposable map only; not natural maturity
@@ -143,6 +145,8 @@ namespace AMJ.WildFoodForaging.NativeTests
             var report = new QuickstartVerification();
             report.Assert("natural Warm biome generated",
                 () => map != null && map.Biome?.defName == "AMJ_WarmTemperateForest");
+            report.Assert("native cutter starts away from an unoccupied target tree",
+                () => tree != null && pawnStartPosition.DistanceToSquared(treeStartPosition) >= 4);
             report.Assert("standing Environment tree had unchanged wood-primary identity",
                 () => setupFailure == null && tree != null && wood != null &&
                     tree.def.defName == "AMJ_Tree_Shii" &&
