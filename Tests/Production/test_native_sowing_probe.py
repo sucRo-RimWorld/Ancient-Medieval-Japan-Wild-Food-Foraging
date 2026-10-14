@@ -87,7 +87,7 @@ class NativeSowingProbeContract(unittest.TestCase):
             self.assertTrue((dest / "Defs/ThingDefs_Plants/AMJWF_SowingBases.xml").is_file())
             self.assertTrue((dest / "Defs/ThingDefs_Plants/AMJWF_ProbePlants.xml").is_file())
             self.assertTrue((dest / "Patches/AMJWF_ProbeWarmWildPlants.xml").is_file())
-            self.assertIn("TEST ONLY", (dest / "README-TEST-ONLY.md").read_text())
+            self.assertIn("DEVELOPER-ONLY RIMWORLD TEST PROBE", (dest / "README-TEST-ONLY.md").read_text())
             about = ET.parse(dest / "About/About.xml").getroot()
             self.assertEqual(about.findtext("packageId"), "sucro.amj.foraging.dev.sowingprobe")
             self.assertFalse((ROOT / "About/About.xml").exists())
