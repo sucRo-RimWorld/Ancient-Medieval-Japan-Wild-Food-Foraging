@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!--
+    Vanilla RimWorld 1.6 native inheritance only, no playable species.
+    These are ABSTRACT templates: no concrete defName, texture, food ThingDef,
+    nut quantities, growth timing, seasonal balancing or biome wildPlants entries.
+    Do not redefine AMJ_Tree_Shii: Environment owns its PlantDef and sowing.
+    The full 12-resource policy is Docs/ResourceAcquisitionMatrix.json.
+  -->
+
+  <!-- TreeBase already supplies Ground/TreeSowing/mustBeWildToSow=true,
+       plus native wood-primary harvest; DO NOT replace wood with nuts. -->
+  <ThingDef Name="AMJWF_ForageNutTreeBase" ParentName="TreeBase" Abstract="True" />
+
+  <!-- One seedless/ordinary growing-zone pathway for accepted wild greens,
+       using PlantBase (which has no inherited sowTags) plus native Ground. -->
+  <ThingDef Name="AMJWF_SowableWildGreenBase" ParentName="PlantBase" Abstract="True">
+    <plant>
+      <sowTags>
+        <li>Ground</li>
+      </sowTags>
+    </plant>
+  </ThingDef>
+
+  <!-- PlantBase supplies no sowTags: unplanted wild plants and fungal
+       fruiting bodies remain excluded from standard grow-zone menus. -->
+  <ThingDef Name="AMJWF_WildOnlyPlantBase" ParentName="PlantBase" Abstract="True" />
+
+  <!-- Explicit species-specific design bindings. ABSTRACT on purpose:
+       enabling any concrete ThingDef still requires final art, ecology,
+       growth/harvest/resource specs and verified 1.6 gameplay behavior. -->
+
+  <!-- N01 Sudajii is intentionally absent: AMJ Environment already defines it. -->
+  <ThingDef Name="AMJWF_KuriSowingTemplate" ParentName="AMJWF_ForageNutTreeBase" Abstract="True">
+    <label>Japanese chestnut</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_WalnutSowingTemplate" ParentName="AMJWF_ForageNutTreeBase" Abstract="True">
+    <label>Japanese walnut</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_KayaSowingTemplate" ParentName="AMJWF_ForageNutTreeBase" Abstract="True">
+    <label>Japanese torreya</label>
+  </ThingDef>
+
+  <ThingDef Name="AMJWF_FukiSowingTemplate" ParentName="AMJWF_SowableWildGreenBase" Abstract="True">
+    <label>fuki</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_UdoSowingTemplate" ParentName="AMJWF_SowableWildGreenBase" Abstract="True">
+    <label>wild udo</label>
+  </ThingDef>
+
+  <ThingDef Name="AMJWF_WarabiWildTemplate" ParentName="AMJWF_WildOnlyPlantBase" Abstract="True">
+    <label>warabi fern</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_ZenmaiWildTemplate" ParentName="AMJWF_WildOnlyPlantBase" Abstract="True">
+    <label>zenmai fern</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_JinenjoWildTemplate" ParentName="AMJWF_WildOnlyPlantBase" Abstract="True">
+    <label>wild Japanese yam</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_HiratakeWildTemplate" ParentName="AMJWF_WildOnlyPlantBase" Abstract="True">
+    <label>oyster mushroom</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_MatsutakeWildTemplate" ParentName="AMJWF_WildOnlyPlantBase" Abstract="True">
+    <label>matsutake</label>
+  </ThingDef>
+  <ThingDef Name="AMJWF_ShiitakeWildTemplate" ParentName="AMJWF_WildOnlyPlantBase" Abstract="True">
+    <label>wild shiitake</label>
+  </ThingDef>
+</Defs>
