@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Defs>
+  <!-- Loaded only by Tests/NativeSowingProbe/build_probe.py. TEST ONLY.
+       Deliberately uses Vanilla placeholder graphics and artificial growth
+       durations to observe sowing inheritance, never for distributed Mod.
+       No food products, nutrient assumptions or fungal habitat claims. -->
+  <!-- WF-N02; DEVELOPMENT FIXTURE, not final species, tree. -->
+  <ThingDef ParentName="AMJWF_KuriSowingTemplate">
+    <defName>AMJWF_Probe_Kuri</defName>
+    <label>DEV ONLY Kuri plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/TreeOak</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>30</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-N03; DEVELOPMENT FIXTURE, not final species, tree. -->
+  <ThingDef ParentName="AMJWF_WalnutSowingTemplate">
+    <defName>AMJWF_Probe_Walnut</defName>
+    <label>DEV ONLY Walnut plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/TreeOak</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>30</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-N04; DEVELOPMENT FIXTURE, not final species, tree. -->
+  <ThingDef ParentName="AMJWF_KayaSowingTemplate">
+    <defName>AMJWF_Probe_Kaya</defName>
+    <label>DEV ONLY Kaya plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/TreeOak</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>30</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-G01; DEVELOPMENT FIXTURE, not final species, wild. -->
+  <ThingDef ParentName="AMJWF_WarabiWildTemplate">
+    <defName>AMJWF_Probe_Warabi</defName>
+    <label>DEV ONLY Warabi plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/RicePlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-G02; DEVELOPMENT FIXTURE, not final species, wild. -->
+  <ThingDef ParentName="AMJWF_ZenmaiWildTemplate">
+    <defName>AMJWF_Probe_Zenmai</defName>
+    <label>DEV ONLY Zenmai plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/RicePlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-G03; DEVELOPMENT FIXTURE, not final species, sowable. -->
+  <ThingDef ParentName="AMJWF_FukiSowingTemplate">
+    <defName>AMJWF_Probe_Fuki</defName>
+    <label>DEV ONLY Fuki plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/PotatoPlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-G04; DEVELOPMENT FIXTURE, not final species, sowable. -->
+  <ThingDef ParentName="AMJWF_UdoSowingTemplate">
+    <defName>AMJWF_Probe_Udo</defName>
+    <label>DEV ONLY Udo plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/PotatoPlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-R01; DEVELOPMENT FIXTURE, not final species, wild. -->
+  <ThingDef ParentName="AMJWF_JinenjoWildTemplate">
+    <defName>AMJWF_Probe_Jinenjo</defName>
+    <label>DEV ONLY Jinenjo plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/PotatoPlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-F01; DEVELOPMENT FIXTURE, not final species, wild. -->
+  <ThingDef ParentName="AMJWF_HiratakeWildTemplate">
+    <defName>AMJWF_Probe_Hiratake</defName>
+    <label>DEV ONLY Hiratake plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/RicePlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-F02; DEVELOPMENT FIXTURE, not final species, wild. -->
+  <ThingDef ParentName="AMJWF_MatsutakeWildTemplate">
+    <defName>AMJWF_Probe_Matsutake</defName>
+    <label>DEV ONLY Matsutake plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/RicePlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+
+  <!-- WF-F03; DEVELOPMENT FIXTURE, not final species, wild. -->
+  <ThingDef ParentName="AMJWF_ShiitakeWildTemplate">
+    <defName>AMJWF_Probe_Shiitake</defName>
+    <label>DEV ONLY Shiitake plant</label>
+    <description>Temporary mechanics probe. Not a historical artwork or edible plant release.</description>
+    <selectable>true</selectable>
+    <graphicData>
+      <texPath>Things/Plant/RicePlant</texPath>
+      <graphicClass>Graphic_Random</graphicClass>
+    </graphicData>
+    <plant>
+      <growDays>3</growDays>
+    </plant>
+  </ThingDef>
+</Defs>

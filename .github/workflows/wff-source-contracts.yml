@@ -1,0 +1,41 @@
+name: WFF source contracts
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "Defs/**"
+      - "Tests/Production/**"
+      - "Tests/NativeSowingProbe/**"
+      - "Tests/Fixtures/NativeSowingProbe/**"
+      - "Docs/ResourceAcquisitionMatrix.json"
+      - "Docs/ResourceAdoption-v1.md"
+      - "Docs/Research/*Decision.json"
+      - ".github/workflows/wff-source-contracts.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: wff-source-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  source-contracts:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check Foraging XML, adoption, source and fixture contracts
+        run: python -m unittest discover -s Tests/Production -p "test_*.py" -v
+      - name: Stage disposable concrete planting probe
+        run: python Tests/NativeSowingProbe/build_probe.py --output "${{ runner.temp }}/amjwf-native-sowing-probe-${{ github.run_id }}"
+      - name: Confirm only a temporary probe was generated
+        shell: bash
+        run: |
+          test -f "${{ runner.temp }}/amjwf-native-sowing-probe-${{ github.run_id }}/About/About.xml"
+          test ! -d About
+          test ! -d Assemblies

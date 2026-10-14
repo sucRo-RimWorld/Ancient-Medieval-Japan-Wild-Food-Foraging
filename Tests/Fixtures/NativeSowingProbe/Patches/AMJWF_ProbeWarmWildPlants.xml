@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Patch>
+  <!-- TEST FIXTURE ONLY. Never install as a production AMJ Foraging Patch.
+       0.2 is synthetic weight to exercise region-only TreeSowing, not balance.
+       Trees appear in Warm, not Cool: verify regional sow eligibility. -->
+  <Operation Class="PatchOperationAdd">
+    <xpath>Defs/BiomeDef[defName="AMJ_WarmTemperateForest"]/wildPlants</xpath>
+    <value>
+      <AMJWF_Probe_Kuri>0.2</AMJWF_Probe_Kuri>
+      <AMJWF_Probe_Walnut>0.2</AMJWF_Probe_Walnut>
+      <AMJWF_Probe_Kaya>0.2</AMJWF_Probe_Kaya>
+      <AMJWF_Probe_Warabi>0.2</AMJWF_Probe_Warabi>
+      <AMJWF_Probe_Zenmai>0.2</AMJWF_Probe_Zenmai>
+      <AMJWF_Probe_Fuki>0.2</AMJWF_Probe_Fuki>
+      <AMJWF_Probe_Udo>0.2</AMJWF_Probe_Udo>
+      <AMJWF_Probe_Jinenjo>0.2</AMJWF_Probe_Jinenjo>
+    </value>
+  </Operation>
+  <!-- Wild fungi deliberately receive no generic biome-only distribution.
+       Real host/substrate checks must precede actual fungal spawning. -->
+</Patch>
