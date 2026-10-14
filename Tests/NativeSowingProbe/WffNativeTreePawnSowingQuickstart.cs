@@ -18,6 +18,7 @@ namespace AMJ.WildFoodForaging.NativeTests
         private readonly List<Zone_Growing> zones = new List<Zone_Growing>();
         private readonly List<ThingDef> trees = new List<ThingDef>();
         private readonly List<bool> jobsStarted = new List<bool>();
+        private readonly List<ThingDef> nativeJobSowPlants = new List<ThingDef>();
         private readonly List<Pawn> planters = new List<Pawn>();
         private readonly List<IntVec3> pawnStartCells = new List<IntVec3>();
         private readonly List<bool> nativeSkillSatisfied = new List<bool>();
@@ -154,6 +155,10 @@ namespace AMJ.WildFoodForaging.NativeTests
                 zones.Add(acceptedZone);
                 cells.Add(selected);
                 trees.Add(plant);
+                nativeJobSowPlants.Add(job.plantDefToSow);
+                Log.Message("[WFF TreeSow Assignment] requested=" + plant.defName +
+                    "; nativeJobPlant=" + (job.plantDefToSow?.defName ?? "null") +
+                    "; targetCell=" + selected);
                 planters.Add(pawn);
                 pawnStartCells.Add(pawn.Position);
                 pawn.jobs.StartJob(job, JobCondition.InterruptForced);
@@ -196,6 +201,9 @@ namespace AMJ.WildFoodForaging.NativeTests
                 (setupFailure ?? "OK") + "; started=" + jobsStarted.Count,
                 () => setupFailure == null && jobsStarted.Count == 3 &&
                     jobsStarted.All(x => x) && cells.Count == 3);
+            report.Assert("three native Sow Job species match explicit grow-zone choices",
+                () => nativeJobSowPlants.Count == 3 && trees.Count == 3 &&
+                    Enumerable.Range(0, 3).All(i => nativeJobSowPlants[i] == trees[i]));
             report.Assert("Kuri synthetic tree planted by native pawn",
                 () => Planted(0, "AMJWF_Probe_Kuri"));
             report.Assert("Walnut synthetic tree planted by native pawn",

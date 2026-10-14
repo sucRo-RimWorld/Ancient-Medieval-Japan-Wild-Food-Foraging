@@ -35,6 +35,9 @@ class TestTreePawnSowingSource(unittest.TestCase):
             "currentJob=",
             "targetZoneRetained=",
             "targetPlants=",
+            "[WFF TreeSow Assignment]",
+            "job.plantDefToSow",
+            "nativeJobSowPlants[i] == trees[i]",
             'p.def.defName + "/sown=" + p.sown',
             "p.def == trees[i] && p.sown",
         ):
