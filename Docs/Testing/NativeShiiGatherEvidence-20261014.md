@@ -24,6 +24,12 @@ Both successful runs launched real isolated **RimWorldLinux 1.6.4871 rev600** wi
 - **Job:** A real spawned player pawn receives the test `JobDef` through the original `WorkGiver`, then the game advances 1800 native ticks. Exactly one marker, no outstanding gather designation and no immediate second valid Job are required.
 - **Verification:** Each run requires all assertions and `preLaunchErrors=0`, `logErrors=0`, genuine Unity `error_count=0`, exit 0 and no timeout. Merely satisfying the per-assertion total is insufficient.
 
+## Cooldown-boundary next native run — blocked before game (2026-10-14)
+
+WFF [PR #52](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging/pull/52), main `b473bf151944464d49c308026950823dcca86324`, adds test-only `WffShiiCooldownQuickstart`: direct 1.6 gathering with synthetic Steel x1, immediate repeat rejection, native advance through synthetic 1,800 ticks and a single new gather followed by renewed cooldown. Project [PR #143](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/pull/143), main `6601e00f106ab79fed8a76fdc145f2bfc9e50612`, added the **source-pinned** `/amj wff-shii-cooldown-16` isolated Xvfb route; both relevant Project PR checks and WFF source CI passed. This new case is **not a save/reload or exact 1,799/1,800 frame-edge test** and does not approve balance.
+
+[Project Actions run 38517643035](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/actions/runs/38517643035) **attempt 1 and attempt 2 FAILED at `Set up job`, before checkout/C# build/game**. Both logged DNS resolution failures for `codeload.github.com:443` when downloading `actions/checkout@v5` (3 attempted downloads each). No Quickstart report, RimWorld runtime or loaded map was produced. **Native cooldown-boundary result: NOT RUN; do not claim PASS or a gameplay regression.** Host/network prerequisites belong to Project's persistent-runner workstream; WFF resumes the already-pinned scenario when the host can download actions. Preserve earlier successful Shii direct/Job/race/cancel evidence independently.
+
 ## Explicitly remaining acceptance gaps
 
 - **F01–F04:** Production install metadata, real edible nut output, cut-tree timber count and `PlantCollected` interception instrumentation, MO WoodChain and cut-after-gather paths remain untested. The test-only native Job route provides **partial F04 mechanism** evidence, not full F04.
