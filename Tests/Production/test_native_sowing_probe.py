@@ -95,8 +95,8 @@ class NativeSowingProbeContract(unittest.TestCase):
                 builder.build(output)
 
     def test_fixture_is_not_public_distribution_source(self):
-        self.assertNotIn("/Defs/", str(CONCRETE.relative_to(ROOT)))
-        self.assertNotIn("/Patches/", str(PATCH.relative_to(ROOT)))
+        self.assertEqual(CONCRETE.relative_to(ROOT).parts[:2], ("Tests", "Fixtures"))
+        self.assertEqual(PATCH.relative_to(ROOT).parts[:2], ("Tests", "Fixtures"))
         self.assertNotIn("AMJWF_Probe_Kuri", BASES.read_text(encoding="utf-8"))
         self.assertIn("TEST ONLY", (FIXTURE / "Defs/ThingDefs_Plants/AMJWF_ProbePlants.xml").read_text())
 
