@@ -31,7 +31,7 @@
 
 - [Source comparison](../Research/TreeNutMechanismAudit-20261014.md) identifies the concrete shared-harvest obstacle.
 - [Owner Design](../Design.md) remains the only content specification authority.
-- Current result: [native Shii evidence](NativeShiiGatherEvidence-20261014.md) provides actual direct and one-pawn job behavior in one Environment+Vanilla test profile; **F04/F05/F06 are partially observed, none is a complete acceptance PASS**. Other required cases remain NOT RUN. The first failed native runs and precise reasons are retained in evidence.
+- Current result: [native Shii evidence](NativeShiiGatherEvidence-20261014.md) provides actual direct gather, one-pawn gather Job, native repeat cooldown, and **post-gather genuine CutPlant Job / original wood output 8/8 PASS** in isolated Vanilla+Environment diagnostic fixtures; **F02/F04/F05/F06 are partially observed, none is a complete production acceptance PASS**. Actual wood quantity vs Environment-only baseline, MO WoodChain, saved-game behavior, approved food and other required cases remain OPEN. Prior failed native runs and precise reasons are retained in evidence.
 - The **complete production acceptance** cases can be promoted to final Pickle/RimTest/native runs only when production implementation receives a validated Project-format existing-Mod entry decision. Existing limited 1.6 disposable diagnostics are already real native runs, but are not production acceptance. Remove or narrow obsolete scenarios if the accepted mechanism uses existing native behavior instead of custom jobs.
 
 ## Mechanism source coverage (not RimWorld)
