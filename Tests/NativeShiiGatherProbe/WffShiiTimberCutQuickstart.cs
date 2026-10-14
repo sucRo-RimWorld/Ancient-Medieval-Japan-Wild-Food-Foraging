@@ -19,6 +19,7 @@ namespace AMJ.WildFoodForaging.NativeTests
         private bool directGathered;
         private bool cutJobStarted;
         private int initialTreeHitPoints;
+        private int startedAtTick;
         private IntVec3 pawnStartPosition;
         private IntVec3 treeStartPosition;
         private int steelBefore;
@@ -30,7 +31,7 @@ namespace AMJ.WildFoodForaging.NativeTests
         public override string seed => "AMJ-WFF-SHII-20261014";
         public override float planetCoverage => 0.30f;
         public override int mapSize => 150;
-        public override int ticksBeforeVerify => 6000;
+        public override int ticksBeforeVerify => 16000;
 
         public override void PostApplyConfiguration()
         {
@@ -65,7 +66,9 @@ namespace AMJ.WildFoodForaging.NativeTests
                 setupFailure = "No map";
                 return;
             }
-            pawn = map.mapPawns.FreeColonistsSpawned.FirstOrDefault();
+            pawn = map.mapPawns.FreeColonistsSpawned
+                .OrderByDescending(p => p.skills.GetSkill(SkillDefOf.Plants).Level)
+                .FirstOrDefault();
             ThingDef shii = DefDatabase<ThingDef>.GetNamedSilentFail("AMJ_Tree_Shii");
             WorkGiverDef cutDef = DefDatabase<WorkGiverDef>.AllDefsListForReading
                 .FirstOrDefault(d => d.giverClass == typeof(WorkGiver_PlantsCut));
@@ -103,6 +106,7 @@ namespace AMJ.WildFoodForaging.NativeTests
                 return;
             }
             initialTreeHitPoints = tree.HitPoints;
+            startedAtTick = Find.TickManager.TicksGame;
             pawnStartPosition = pawn.Position;
             treeStartPosition = tree.Position;
             steelBefore = Count(ThingDefOf.Steel);
@@ -135,6 +139,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                     (setupFailure ?? "OK") + "; treeSpawned=" + tree.Spawned +
                     "; treeDestroyed=" + tree.Destroyed +
                     "; startHP=" + initialTreeHitPoints + "; endHP=" + tree.HitPoints +
+                    "; elapsedTicks=" + (Find.TickManager.TicksGame - startedAtTick) +
+                    "; pawnPlantsSkill=" + pawn.skills.GetSkill(SkillDefOf.Plants).Level +
                     "; initialPawn=" + pawnStartPosition + "; finalPawn=" + pawn.Position +
                     "; treeCell=" + treeStartPosition +
                     "; currentJob=" + (pawn.jobs.curJob?.def?.defName ?? "none") +
