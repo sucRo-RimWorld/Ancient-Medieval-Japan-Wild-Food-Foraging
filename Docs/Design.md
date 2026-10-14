@@ -2,7 +2,7 @@
 
 **Author-confirmed name (2026-10-08):** Ancient & Medieval Japan - Wild Food Foraging / 中世日本 - 山野採集  
 **Target:** RimWorld 1.6  
-**Status:** **12 wild edible natural resources adopted** (initial 8 + 4 evidence-based additions); Shii-specific C# remains inactive. No playable Mod, actual item/plant Defs, approved numerical balancing or loaded-game tests.
+**Status:** **12 wild edible natural resources adopted** (initial 8 + 4 evidence-based additions); Shii-specific C# remains inactive. **Actual 1.6 native nonshipping probe Def loading and resolved sowing fields PASS** ([precise evidence](Testing/NativeSowingEvidence-20261014.md)); **NO playable production Mod/plant/item Defs, no approved graphics, nutrition, growth/distribution balance, or completed planting/gathering/saving native acceptance.**
 
 ## 1. Purpose and hard boundary
 
