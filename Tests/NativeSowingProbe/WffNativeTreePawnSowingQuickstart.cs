@@ -85,6 +85,9 @@ namespace AMJ.WildFoodForaging.NativeTests
                 setupFailure = "TreeSowing research did not finish";
                 return;
             }
+            Log.Message("[WFF TreeSow Diagnostic] freeColonists=" + pawns.Count +
+                "; researchFinished=" + treeResearchNowFinished +
+                "; firstTree=" + plants[0].defName);
             for (int i = 0; i < plants.Length; i++)
             {
                 Pawn pawn = pawns[i];
@@ -92,6 +95,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                 Job job = null;
                 Zone_Growing acceptedZone = null;
                 IntVec3 selected = IntVec3.Invalid;
+                int precheckedCells = 0;
+                int refusedJobs = 0;
                 foreach (IntVec3 cell in map.AllCells.OrderBy(c => c.DistanceToSquared(pawn.Position)))
                 {
                     if (!cell.Standable(map) || cell.Fogged(map) ||
@@ -101,6 +106,7 @@ namespace AMJ.WildFoodForaging.NativeTests
                         cell.GetThingList(map).Any(t => t is Plant ||
                             t.def.category == ThingCategory.Building))
                         continue;
+                    precheckedCells++;
                     Zone_Growing candidate = new Zone_Growing(map.zoneManager);
                     map.zoneManager.RegisterZone(candidate);
                     candidate.AddCell(cell);
@@ -113,11 +119,16 @@ namespace AMJ.WildFoodForaging.NativeTests
                         selected = cell;
                         break;
                     }
+                    refusedJobs++;
                     candidate.Delete();
                 }
                 if (job == null)
                 {
-                    setupFailure = "Native tree sowing rejected all eligible cells for " + plant.defName;
+                    setupFailure = "Native tree sowing rejected all eligible cells for " + plant.defName +
+                        "; eligibleTerrainAndReach=" + precheckedCells +
+                        "; nativeJobRefusals=" + refusedJobs +
+                        "; previouslyStartedJobs=" + jobsStarted.Count;
+                    Log.Message("[WFF TreeSow Diagnostic] " + setupFailure);
                     return;
                 }
                 zones.Add(acceptedZone);
@@ -135,7 +146,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                 () => map != null && map.Biome?.defName == "AMJ_WarmTemperateForest");
             report.Assert("TreeSowing unlocked inside fresh isolated game",
                 () => treeResearchWasUnfinished && treeResearchNowFinished);
-            report.Assert("three native pawn tree sow jobs started after research",
+            report.Assert("three native pawn tree sow jobs started after research; setup=" +
+                (setupFailure ?? "OK") + "; started=" + jobsStarted.Count,
                 () => setupFailure == null && jobsStarted.Count == 3 &&
                     jobsStarted.All(x => x) && cells.Count == 3);
             report.Assert("Kuri synthetic tree planted by native pawn",
