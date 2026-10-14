@@ -18,6 +18,9 @@ namespace AMJ.WildFoodForaging.NativeTests
         private ThingDef wood;
         private bool directGathered;
         private bool cutJobStarted;
+        private int initialTreeHitPoints;
+        private IntVec3 pawnStartPosition;
+        private IntVec3 treeStartPosition;
         private int steelBefore;
         private int woodBefore;
         private string setupFailure;
@@ -97,6 +100,9 @@ namespace AMJ.WildFoodForaging.NativeTests
                 setupFailure = "No reachable eligible natural Shii";
                 return;
             }
+            initialTreeHitPoints = tree.HitPoints;
+            pawnStartPosition = pawn.Position;
+            treeStartPosition = tree.Position;
             steelBefore = Count(ThingDefOf.Steel);
             woodBefore = Count(wood);
             var gathering = tree.TryGetComp<CompShiiGatherState>();
@@ -119,6 +125,21 @@ namespace AMJ.WildFoodForaging.NativeTests
 
         public override QuickstartVerification Verify()
         {
+            if (tree != null && map != null && pawn != null && wood != null)
+            {
+                var designation = map.designationManager.DesignationOn(
+                    tree, DesignationDefOf.CutPlant);
+                Log.Message("[WFF Shii Timber Diagnostic] setup=" +
+                    (setupFailure ?? "OK") + "; treeSpawned=" + tree.Spawned +
+                    "; treeDestroyed=" + tree.Destroyed +
+                    "; startHP=" + initialTreeHitPoints + "; endHP=" + tree.HitPoints +
+                    "; initialPawn=" + pawnStartPosition + "; finalPawn=" + pawn.Position +
+                    "; treeCell=" + treeStartPosition +
+                    "; currentJob=" + (pawn.jobs.curJob?.def?.defName ?? "none") +
+                    "; cutDesignationPresent=" + (designation != null) +
+                    "; gainedWood=" + (Count(wood) - woodBefore) +
+                    "; extraMarkers=" + (Count(ThingDefOf.Steel) - steelBefore - 1));
+            }
             var report = new QuickstartVerification();
             report.Assert("natural Warm biome generated",
                 () => map != null && map.Biome?.defName == "AMJ_WarmTemperateForest");
