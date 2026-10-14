@@ -19,6 +19,9 @@ class TestShiiNativeTimberSource(unittest.TestCase):
             "job.def != JobDefOf.CutPlantDesignated",
             "pawn.jobs.StartJob(job, JobCondition.InterruptForced)",
             "Count(wood) > woodBefore",
+            "[WFF Shii Timber Diagnostic]",
+            "cutDesignationPresent=",
+            "startHP=",
             "Count(ThingDefOf.Steel) - steelBefore == 1",
         ):
             self.assertIn(token, source)
