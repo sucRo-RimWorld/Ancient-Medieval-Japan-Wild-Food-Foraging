@@ -22,8 +22,10 @@ class TestShiiNativeTimberSource(unittest.TestCase):
             "Count(ThingDefOf.Steel) - steelBefore == 1",
         ):
             self.assertIn(token, source)
-        for forbidden in ("harvestedThingDef =", "harvestYield =",
-                          "GenSpawn.Spawn(", "PlantCollected(", "ThingMaker.MakeThing("):
+        # Distinguish read-only == comparisons from actual field assignments.
+        self.assertNotRegex(source, r"harvestedThingDef\s*=(?!=)")
+        self.assertNotRegex(source, r"harvestYield\s*=(?!=)")
+        for forbidden in ("GenSpawn.Spawn(", "PlantCollected(", "ThingMaker.MakeThing("):
             self.assertNotIn(forbidden, source)
 
 if __name__ == "__main__":
