@@ -23,6 +23,9 @@ class TestTreePawnSowingSource(unittest.TestCase):
             "pawn.jobs.StartJob(job, JobCondition.InterruptForced)",
             "Planted(0,", "Planted(1,", "Planted(2,",
             "map.zoneManager.ZoneAt(cells[i]) == zones[i]",
+            "nativeJobRefusals=",
+            "eligibleTerrainAndReach=",
+            "Log.Message(\"[WFF TreeSow Diagnostic]",
         ):
             self.assertIn(token, src)
         for forbidden in ("GenSpawn.Spawn(", "PlantCollected(", "ThingMaker.MakeThing(plant)",
