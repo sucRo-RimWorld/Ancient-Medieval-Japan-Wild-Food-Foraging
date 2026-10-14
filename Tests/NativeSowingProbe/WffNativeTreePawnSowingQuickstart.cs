@@ -69,10 +69,11 @@ namespace AMJ.WildFoodForaging.NativeTests
                 .FirstOrDefault(d => d.giverClass == typeof(WorkGiver_GrowerSow));
             // Use a fresh native WorkGiver for each independent diagnostic grow zone.
             // A previously-used WorkGiver may retain the last requested sow plant.
-            if (workDef?.Worker is not WorkGiver_GrowerSow)
+            bool nativeWorkerAvailable = workDef != null &&
+                workDef.Worker is WorkGiver_GrowerSow;
             string[] defs = { "AMJWF_Probe_Kuri", "AMJWF_Probe_Walnut", "AMJWF_Probe_Kaya" };
             var plants = defs.Select(DefDatabase<ThingDef>.GetNamedSilentFail).ToArray();
-            if (pawns.Count != 3 || workDef == null || research == null ||
+            if (pawns.Count != 3 || !nativeWorkerAvailable || research == null ||
                 plants.Any(p => p?.plant == null))
             {
                 setupFailure = "Native research, pawns, WorkGiver or fixture tree missing";
