@@ -22,6 +22,8 @@ class TestShiiNativeTimberSource(unittest.TestCase):
             "[WFF Shii Timber Diagnostic]",
             "cutDesignationPresent=",
             "startHP=",
+            "p.Position.DistanceToSquared(pawn.Position) >= 4",
+            "pawnStartPosition.DistanceToSquared(treeStartPosition) >= 4",
             "Count(ThingDefOf.Steel) - steelBefore == 1",
         ):
             self.assertIn(token, source)
