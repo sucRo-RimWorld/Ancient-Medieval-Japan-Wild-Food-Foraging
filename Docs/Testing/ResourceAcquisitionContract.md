@@ -31,7 +31,7 @@ The natural-product identities/edible parts are the twelve **adopted** objects i
 
 ## Species-specific planting contracts (also NOT RUN)
 
-**Implementation checkpoint:** As of 2026-10-14, the real [abstract XML templates](../../Defs/ThingDefs_Plants/AMJWF_SowingBases.xml) stage sowing inheritance for future concrete Foraging species. They have no defName and cannot appear in actual RimWorld growing menus. The new [native-XML static guard](../../Tests/Production/test_native_sowing_bases.py) is available but must not be counted as a pawn-job/menu/save test. **AC18–AC22 full acceptance remains OPEN**; genuine 1.6 Fuki/Udo synthetic pawn sowing now provides a **partial AC20 diagnostic PASS** with [exact evidence](NativePawnSowingEvidence-20261014.md), not complete accepted gameplay.
+**Implementation checkpoint:** As of 2026-10-14, the real [abstract XML templates](../../Defs/ThingDefs_Plants/AMJWF_SowingBases.xml) stage sowing inheritance for future concrete Foraging species. They have no defName and cannot appear in actual RimWorld growing menus. The new [native-XML static guard](../../Tests/Production/test_native_sowing_bases.py) is available but must not be counted as a pawn-job/menu/save test. **AC18–AC22 full acceptance remains OPEN**; genuine 1.6 Fuki/Udo synthetic pawn sowing provides **partial AC20 diagnostic PASS**; Kuri/Kaya synthetic native tree sowing provides **partial AC19 observations, but overall 7/8 FAIL because Walnut was replaced/occupied by synthetic Kuri in its target cell**, with [native evidence and exact premises](NativePawnSowingEvidence-20261014.md). No final production species or planting acceptance can be inferred.
 
 
 
