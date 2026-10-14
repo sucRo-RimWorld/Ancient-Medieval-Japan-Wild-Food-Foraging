@@ -35,6 +35,8 @@ class TestTreePawnSowingSource(unittest.TestCase):
             "currentJob=",
             "targetZoneRetained=",
             "targetPlants=",
+            'p.def.defName + "/sown=" + p.sown',
+            "p.def == trees[i] && p.sown",
         ):
             self.assertIn(token, src)
         for forbidden in ("GenSpawn.Spawn(", "PlantCollected(", "ThingMaker.MakeThing(plant)",
