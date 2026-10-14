@@ -43,6 +43,15 @@ class TestShiiSourceContract(unittest.TestCase):
             self.assertIn(token, content)
         self.assertNotIn('plant.Destroy(', content)
 
+    def test_gather_order_is_one_shot_only_after_success(self):
+        job = read("JobDriver_GatherShiiNuts.cs")
+        self.assertIn("!state.TryGather(pawn)", job)
+        self.assertIn('GetNamedSilentFail("AMJ_GatherShiiNuts")', job)
+        self.assertIn("designationManager.RemoveDesignation(designation)", job)
+        self.assertLess(job.index("!state.TryGather(pawn)"), job.index("RemoveDesignation(designation)"))
+        self.assertIn("if (designation != null)", job)
+        self.assertNotIn("RemoveAllDesignations", job)
+
     def test_workgiver_is_limited_to_designated_shii(self):
         content = read("WorkGiver_GatherShiiNuts.cs")
         for token in ['DesignationOn(thing, gather)', 'thing.def.defName != "AMJ_Tree_Shii"',

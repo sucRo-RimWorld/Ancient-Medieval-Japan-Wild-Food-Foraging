@@ -33,8 +33,20 @@ namespace AMJ.WildFoodForaging
             yield return Toils_General.Do(() =>
             {
                 var state = State;
-                if (state != null && state.CanGather())
-                    state.TryGather(pawn);
+                if (state == null || !state.CanGather() || !state.TryGather(pawn))
+                    return;
+
+                // A completed order is one-shot. Remove only after the product
+                // was successfully placed and the per-tree cooldown saved.
+                Thing tree = job.targetA.Thing;
+                if (tree == null || !tree.Spawned)
+                    return;
+                DesignationDef gather = DefDatabase<DesignationDef>.GetNamedSilentFail("AMJ_GatherShiiNuts");
+                if (gather == null)
+                    return;
+                Designation designation = tree.Map.designationManager.DesignationOn(tree, gather);
+                if (designation != null)
+                    tree.Map.designationManager.RemoveDesignation(designation);
             });
         }
     }
