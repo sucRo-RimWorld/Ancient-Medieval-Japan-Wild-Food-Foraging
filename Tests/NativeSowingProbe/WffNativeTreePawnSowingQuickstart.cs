@@ -18,6 +18,8 @@ namespace AMJ.WildFoodForaging.NativeTests
         private readonly List<Zone_Growing> zones = new List<Zone_Growing>();
         private readonly List<ThingDef> trees = new List<ThingDef>();
         private readonly List<bool> jobsStarted = new List<bool>();
+        private readonly List<Pawn> planters = new List<Pawn>();
+        private readonly List<IntVec3> pawnStartCells = new List<IntVec3>();
         private readonly List<bool> nativeSkillSatisfied = new List<bool>();
         private bool treeResearchWasUnfinished;
         private bool treeResearchNowFinished;
@@ -150,6 +152,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                 zones.Add(acceptedZone);
                 cells.Add(selected);
                 trees.Add(plant);
+                planters.Add(pawn);
+                pawnStartCells.Add(pawn.Position);
                 pawn.jobs.StartJob(job, JobCondition.InterruptForced);
                 jobsStarted.Add(pawn.jobs.curJob?.def == JobDefOf.Sow);
             }
@@ -157,6 +161,28 @@ namespace AMJ.WildFoodForaging.NativeTests
 
         public override QuickstartVerification Verify()
         {
+            if (map != null)
+            {
+                for (int i = 0; i < cells.Count && i < trees.Count &&
+                     i < planters.Count && i < pawnStartCells.Count; i++)
+                {
+                    Pawn planter = planters[i];
+                    IntVec3 cell = cells[i];
+                    Plant[] observed = cell.GetThingList(map).OfType<Plant>().ToArray();
+                    Log.Message("[WFF TreeSow Outcome] species=" + trees[i].defName +
+                        "; planter=" + planter.LabelShort +
+                        "; originalPosition=" + pawnStartCells[i] +
+                        "; finalPosition=" + planter.Position +
+                        "; targetCell=" + cell +
+                        "; currentJob=" + (planter.jobs.curJob?.def?.defName ?? "none") +
+                        "; planterSpawned=" + planter.Spawned +
+                        "; planterDowned=" + planter.Downed +
+                        "; targetZoneRetained=" + (map.zoneManager.ZoneAt(cell) == zones[i]) +
+                        "; targetTerrain=" + map.terrainGrid.TerrainAt(cell).defName +
+                        "; targetPlants=" + string.Join(",",
+                            observed.Select(p => p.def.defName).ToArray()));
+                }
+            }
             var report = new QuickstartVerification();
             report.Assert("genuine Environment Warm biome map",
                 () => map != null && map.Biome?.defName == "AMJ_WarmTemperateForest");
