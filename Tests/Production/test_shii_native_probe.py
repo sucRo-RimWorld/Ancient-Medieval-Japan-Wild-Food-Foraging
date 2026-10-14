@@ -24,6 +24,8 @@ class TestShiiNativeProbe(unittest.TestCase):
             defs = ET.parse(target / "Defs/AMJWF_ShiiGatherDiagnostic.xml").getroot()
             self.assertEqual(len(defs.findall("JobDef")), 1)
             self.assertEqual(len(defs.findall("DesignationDef")), 1)
+            self.assertEqual(defs.findtext("./DesignationDef/texturePath"),
+                             "UI/Designators/Harvest")
             patch = (target / "Patches/AMJWF_ShiiGatherDiagnostic.xml").read_text()
             self.assertIn("<productDef>Steel</productDef>", patch)
             self.assertIn("<cooldownTicks>1800</cooldownTicks>", patch)

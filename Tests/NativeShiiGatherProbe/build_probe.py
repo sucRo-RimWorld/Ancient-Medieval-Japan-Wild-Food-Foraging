@@ -30,6 +30,7 @@ DEFS = """<?xml version="1.0" encoding="utf-8"?>
   <DesignationDef>
     <defName>AMJ_GatherShiiNuts</defName>
     <label>Shii gather diagnostic order</label>
+    <texturePath>UI/Designators/Harvest</texturePath>
   </DesignationDef>
 </Defs>
 """
