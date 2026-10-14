@@ -12,7 +12,7 @@ never destroys a tree, and never changes its wood-primary `harvestedThingDef`.
 - `WorkGiver_GatherShiiNuts`: designated trees only; tests reach/reservation,
   forbid/burn and blocks simultaneous Vanilla cut/harvest designations.
 - `JobDriver_GatherShiiNuts`: reserves the actual tree; waits, revalidates
-  eligibility and requests a single gather completion.
+  eligibility, requests a single gather completion, and clears the one-shot\n  designation only after a successful product placement.
 
 ## Explicitly not yet executable
 
