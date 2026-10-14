@@ -182,7 +182,7 @@ namespace AMJ.WildFoodForaging.NativeTests
                         "; targetZoneRetained=" + (map.zoneManager.ZoneAt(cell) == zones[i]) +
                         "; targetTerrain=" + map.terrainGrid.TerrainAt(cell).defName +
                         "; targetPlants=" + string.Join(",",
-                            observed.Select(p => p.def.defName).ToArray()));
+                            observed.Select(p => p.def.defName + "/sown=" + p.sown).ToArray()));
                 }
             }
             var report = new QuickstartVerification();
@@ -216,7 +216,7 @@ namespace AMJ.WildFoodForaging.NativeTests
                 trees[i].defName != name)
                 return false;
             return cells[i].GetThingList(map).OfType<Plant>()
-                .Any(p => p.Spawned && !p.Destroyed && p.def == trees[i]);
+                .Any(p => p.Spawned && !p.Destroyed && p.def == trees[i] && p.sown);
         }
     }
 }
