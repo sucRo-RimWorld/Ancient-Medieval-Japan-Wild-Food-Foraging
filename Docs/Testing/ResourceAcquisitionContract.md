@@ -1,4 +1,4 @@
-# 12-resource gathering acceptance contract — NOT RUN (2026-10-14)
+# 12-resource gathering acceptance contract — native Def fields partially verified; gameplay NOT RUN (2026-10-14)
 
 The natural-product identities/edible parts are the twelve **adopted** objects in [owner adoption list](../ResourceAdoption-v1.md); the proposed collection mode and habitat/preparation constraints are in [AcquisitionDesign](../AcquisitionDesign.md) and machine-readable [matrix](../ResourceAcquisitionMatrix.json). **All AC01–AC12 are proposed real-game tests, currently NOT RUN**, not proven implementations. Each item will be given exact numerical expectations **only after** those values are specified and source/game action exists. The currently available Shii-only static C# scaffold does not cover these cases.
 
@@ -24,6 +24,8 @@ The natural-product identities/edible parts are the twelve **adopted** objects i
 - **AC15 — Correctly bounded processing:** Raw ingredient, correctly processed ingredient and full meal are distinct stages when safety requires it. Inedible dangerous young shoots, Fuki alkaloid products, uncooked Shiitake are never silently equivalent to a safe meal.
 - **AC16 — Distribution versus habitat:** Approved zone/host/substrate conditions, normal world generation and preexisting-map behavior are tested; `wildPlantRegrowDays` is not assumed equal to individual gathering refresh; no invented commonality or season values.
 - **AC17 — Optional profiles:** Baseline Environment with Vanilla first, then separate CCTO, MO and MO+CCTO profiles and any specifically advertised extra-Mod coexistence. **Presence/absence of VV or More Mushrooms cannot veto the twelve adopted species or basic Foraging content.**
+
+**Native loaded-Def checkpoint 2026-10-14:** [real 1.6 run #38503071680 and follow-up field run #38503884622](NativeSowingEvidence-20261014.md) established **11 concrete test-only ThingDefs loaded**, then actual inherited fields for Kuri/Walnut/Kaya/Fuki/Udo and existing Shii wood. Both Pickle runs **1/1 PASS, exit 0, Unity errors 0**, with scoped source SHA and artifacts. **AC18–AC22 are not fully exercised and remain NOT RUN as complete acceptance cases.** Notably this does NOT show region/menu availability before/after research, actual pawns sowing, saved plant survival, edible harvest, or negative wild-fungi planting behavior. Source-only tests remain a separate tier.
 
 ## Species-specific planting contracts (also NOT RUN)
 
