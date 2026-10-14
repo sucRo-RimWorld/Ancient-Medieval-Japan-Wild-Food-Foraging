@@ -30,6 +30,10 @@ class TestTreePawnSowingSource(unittest.TestCase):
             "nativeJobRefusals=",
             "eligibleTerrainAndReach=",
             "Log.Message(\"[WFF TreeSow Diagnostic]",
+            "[WFF TreeSow Outcome]",
+            "currentJob=",
+            "targetZoneRetained=",
+            "targetPlants=",
         ):
             self.assertIn(token, src)
         for forbidden in ("GenSpawn.Spawn(", "PlantCollected(", "ThingMaker.MakeThing(plant)",
