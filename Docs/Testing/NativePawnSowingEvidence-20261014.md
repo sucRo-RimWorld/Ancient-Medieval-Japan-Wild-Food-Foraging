@@ -42,3 +42,15 @@ The last three runs compiled successfully, were **RimWorldLinux 1.6.4871 rev600*
 - **Not established:** whether test-fixture wild seed spawning, another grower, or Job's species resolution caused Kuri to occupy Walnut's target. The **synthetic 0.2 wildPlants population weight** is a plausible confounder but **not yet a proven cause**. Before modifying further fixtures or treating native sow behavior as defective, examine actual Job plant-def selection and/or isolate natural spawn from pawn planting with an independent observable mechanism. **Do not simply lower assertions, choose a lucky seed or dilute the test to infer success.**
 - **Production still OPEN:** AC19 as a whole, natural approved habitat/spawn, exact wood/food content, growth to maturity, native harvest, long saves, MO/CCTO compatibility and real gameplay balancing. The adopted trees remain design-approved; the failed synthetic diagnostic does not rescind adoption.
 
+
+
+### Native Job species mismatch isolated; corrected fixture awaits real game (2026-10-14)
+
+- [Native run #38535708423](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/actions/runs/38535708423), downloadable artifact **#11880365039**, source `8d7e9d01c689db9b42439427c0a09b69e3d98c82`: **7/9 assertions PASS**, remaining failures are explicit Job-species match and Walnut plant verification; 1.6.4871, zero Unity/prelaunch/log ERROR but overall test FAIL. The Unity log directly records `[WFF TreeSow Assignment]`:
+  - Kuri: requested `AMJWF_Probe_Kuri`; `job.plantDefToSow=AMJWF_Probe_Kuri`; planted Kuri.
+  - Walnut: requested `AMJWF_Probe_Walnut`; **`job.plantDefToSow=AMJWF_Probe_Kuri`**; planted Kuri.
+  - Kaya: requested `AMJWF_Probe_Kaya`; **`job.plantDefToSow=AMJWF_Probe_Kuri`**; final planted Kaya from the continuing native game.
+- This proves an **actual constructed Job species mismatch for at least Walnut and Kaya in that shared-WorkGiver test scenario**. Therefore the earlier suggestion that wild spawning alone explains the Walnut failure is superseded. The synthetic `wildPlants` patches still preclude any claim about production ecology.
+- WFF [PR #73](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging/pull/73), owner main `3a0d658896a1df444f29d8693f7625c6a14ec267`, stages a **fresh native WorkGiver per synthetic tree**, without weakening any Job/plant assertion. Project [PR #177](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/pull/177), main `34e6fcbf934aa0d9c786f1a0f0df42e0450bae6c`, pins that exact test. Both relevant source CI checks PASS.
+- Actual [rerun #38538124818](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/actions/runs/38538124818) **failed during runner setup before checkout** because `codeload.github.com` could not resolve. **No revised C# build/game/9-case acceptance occurred**. Recheck when runner DNS is stable; neither 1.6 compatibility nor full AC19 is presently PASS. A failed setup must not be relabeled a sowing failure.
+
