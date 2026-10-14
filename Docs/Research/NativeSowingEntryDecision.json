@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "feature": "Native sow-rule XML abstract templates for selected Foraging species",
+  "owner": "sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging",
+  "scope": "Stage abstract RimWorld ThingDef inheritance templates for adopted researched native tree planting (Kuri, walnut, Kaya), ordinary Ground sowing (Fuki, Udo), and non-sowable wild plants/fungi, while leaving Environment Shii unchanged. No concrete food item Defs, numeric plant behavior, harvest loops, art or playable Mod.",
+  "status": "ready",
+  "unresolved": [],
+  "search": {
+    "date": "2026-10-14",
+    "queries": [
+      "RimWorld Vanilla PlantBase TreeBase sowTags sowResearchPrerequisites mustBeWildToSow XML",
+      "Medieval Overhaul 1.6 TreeBase garden trees",
+      "Vanilla Plants Expanded More Plants trees sowTags",
+      "VV New Harvest Trees planted trees Vivi tree gathering",
+      "AMJ Environment native Shii regional tree sowing contract"
+    ],
+    "ecosystems": [
+      "vanilla_mo",
+      "amj",
+      "ve",
+      "non_ve"
+    ],
+    "limitations": "Core XML mirror on master not a certified installed 1.6 version; concrete playable Defs would require actual graphics, products, work/yield/season, conditional biome distribution, 1.6 runtime and user-approved food tuning. This narrow decision authorizes ONLY abstract native XML inheritance and static guards; no loaded game claim. VV full source not obtained; not a blocker for using vanilla sowing fields."
+  },
+  "evidence": [
+    {
+      "id": "native-sowing-20261014",
+      "path": "Docs/Research/NativeSowingSourceEvidence-20261014.md",
+      "sha256": "b4ce3bd400019e6464218aed731e36b639daa6c1e7ecfa128f08abc5cd443be2"
+    }
+  ],
+  "candidates": [
+    {
+      "name": "Vanilla core PlantBase/TreeBase and researched tree sowing",
+      "version": "Core XML master verified 2026-10-14, loaded 1.6 unverified",
+      "ecosystem": "vanilla_mo",
+      "comparison": {
+        "function": "TreeBase inherits Ground, TreeSowing and mustBeWildToSow; PlantBase is unsowable absent added sowTags; Vanilla farm plants use Ground.",
+        "historical_fit": "Native vanilla planting accurately models wild woody planting and fuki/udo horticulture without new mechanic.",
+        "dependencies": "Only RimWorld Core; MO 1.6 tree subclasses also inherit TreeBase.",
+        "retention": "Keep existing sow/growing zone, research and wood-harvest untouched.",
+        "progression_balance": "No work, yield or growth values fixed; requirements unchanged.",
+        "reuse": "Use native XML inheritance as-is.",
+        "maintenance_license": "Do not copy XML sources; write Foraging-owned small abstract inheritance bases."
+      },
+      "outcome": "use_as_is",
+      "evidence": [
+        "native-sowing-20261014"
+      ]
+    },
+    {
+      "name": "AMJ Environment existing regional Shii tree sowing",
+      "version": "AMJE main 2026-10-14",
+      "ecosystem": "amj",
+      "comparison": {
+        "function": "Native Region TreeSowing inherited by Environment Shii, its Def remains Environment-owned.",
+        "historical_fit": "Existing Sudajii appearance and research gate accepted.",
+        "dependencies": "Required Environment, one-way Foraging to Environment.",
+        "retention": "Preserve Shii PlantDef and original tree research list/wood.",
+        "progression_balance": "Regional sow gate reused; no additional research or green balancing.",
+        "reuse": "No Shii XML override at all.",
+        "maintenance_license": "AMJE authorship remains original; base owner controls future changes."
+      },
+      "outcome": "use_as_is",
+      "evidence": [
+        "native-sowing-20261014"
+      ]
+    },
+    {
+      "name": "VPE orchard and More Plants",
+      "version": "1.6 source audit 2026-10-14",
+      "ecosystem": "ve",
+      "comparison": {
+        "function": "Fruit-primary tree definitions under native plant Base classes; crop harvest differs from wood-primary Shii nut gather.",
+        "historical_fit": "Orchards are not baseline Japanese food planting but reuse ordinary native growing zone.",
+        "dependencies": "VE not needed for native sow field inheritance.",
+        "retention": "Could add excessive crops/frameworks absent author choice.",
+        "progression_balance": "Season/nutrient definitions excluded from this scope.",
+        "reuse": "No VPE code or Def needed, only native XML field names.",
+        "maintenance_license": "No VPE art or code reproduction, no VE dependency."
+      },
+      "outcome": "prior_art_only",
+      "evidence": [
+        "native-sowing-20261014"
+      ]
+    },
+    {
+      "name": "VV New Harvest Trees and Vivi independent gather",
+      "version": "VV descriptions / Vivi 1.6 source audited 2026-10-14",
+      "ecosystem": "non_ve",
+      "comparison": {
+        "function": "Fruit/tree content and separate wood-preserving gather precedent, not a replacement for researched native tree sowing.",
+        "historical_fit": "Japanese forest collection theme is separate from generic orchard or race gathering systems.",
+        "dependencies": "VV/Vivi dependencies not acceptable for basic sow fields.",
+        "retention": "No replacement of Foraging's accepted species or Environment's scenery.",
+        "progression_balance": "No new breeding/farming system or yield balance is needed.",
+        "reuse": "Use as prior art for collection only; use Vanilla for planting.",
+        "maintenance_license": "No third-party code/images copied; VV actual complete 1.6 XML unavailable."
+      },
+      "outcome": "prior_art_only",
+      "evidence": [
+        "native-sowing-20261014"
+      ]
+    }
+  ],
+  "decision": {
+    "kind": "use_as_is",
+    "rationale": "Author approves individual plantability; native TreeBase already implements researched regional forest tree planting without C# and PlantBase plus sowTags Ground implements grow-zone planting. There is no need to import VE, VV or Vivi for baseline sow flags. Abstract source templates can encode the approved plantability safely without inventing yields/biomes/assets and without mutating Environment Shii. Actual species and functional plant Defs require a separate content approval and loaded tests.",
+    "specification": "Docs/Design.md"
+  }
+}

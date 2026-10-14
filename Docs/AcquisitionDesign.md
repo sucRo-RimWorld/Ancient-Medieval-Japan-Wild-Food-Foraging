@@ -28,6 +28,8 @@
 
 **現行のEnvironment正本：** [EnvironmentのRegional tree sowing contract](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/Design.md)§Regional tree sowing contract は、既存のShiiの樹木栽培研究/野生分布限定と、植林可能な樹木と高山ハイマツのような非植林木本との区別を規定している。新規のForaging食用樹木についても、その研究・地域制限に**矛盾しない独立Def**を作る。Environment本体や既存の植林候補を勝手に変更せず、Foragingを導入した場合のみ新規食用樹木が正しく候補に加わるようにする。
 
+**実装したXMLの範囲（2026-10-14）：** [Foraging-owned abstract PlantDef templates](../Defs/ThingDefs_Plants/AMJWF_SowingBases.xml) は `TreeBase` の植林研究・地域制限の継承、`PlantBase`＋`Ground` でのフキ／ウド植栽、野生専用植物・菌類の `sowTags` なし、という**種別の継承ルールのみ**をソース化した。`Abstract=True` で `defName` を持たないため**ゲームの栽培メニューにはまだ現れない**。既存EnvironmentのスダジイPlantDefを編集していない。史実資源の出現重み／栄養／画像／植え付けJobは依然未実装。適用の技術判断は[Vanilla sowing decision](Research/NativeSowingEntryDecision.json)参照。
+
 **実装優先度：** 可否と植栽可能条件の設計は決定したが、実際の植栽メニュー、研究ロック、地域制限、栽培Job、成長/種実採集の接続は**実ゲーム未検証**。クリ/クルミ/カヤ・フキ/ウドの具体的なXMLとソース必要性判定を次工程で行う。植栽を許すことは自動的な種子アイテム追加、無制限の食材産出、耕作/加工システムのMod所有移管を意味しない。
 
 ## 2. Environment実ソースに対する分布・宿主判定

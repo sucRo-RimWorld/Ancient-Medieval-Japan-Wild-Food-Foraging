@@ -27,6 +27,10 @@ The natural-product identities/edible parts are the twelve **adopted** objects i
 
 ## Species-specific planting contracts (also NOT RUN)
 
+**Implementation checkpoint:** As of 2026-10-14, the real [abstract XML templates](../../Defs/ThingDefs_Plants/AMJWF_SowingBases.xml) stage sowing inheritance for future concrete Foraging species. They have no defName and cannot appear in actual RimWorld growing menus. The new [native-XML static guard](../../Tests/Production/test_native_sowing_bases.py) is available but must not be counted as a pawn-job/menu/save test. **AC18–AC22 remain NOT RUN**.
+
+
+
 - **AC18 — existing Shii retains Environment sowing:** At Warm in which Shii occurs naturally, after Vanilla `TreeSowing` the original `AMJ_Tree_Shii` remains plantable where Environment permits; before research or in nonnative regions it remains excluded per the Environment regional contract. No Foraging duplicate Shii Def/sow override. Actually complete pawn sow → growth → nuts by independent gather → original wood cut → save/reload; verify normal WoodChain when MO is enabled.
 - **AC19 — new Kuri/walnut/Kaya trees:** Each is **Foraging-owned and plantable** only after `TreeSowing` in its eligible native/wild region; no free sowing everywhere. Prove loaded plant inherited/explicit native sow tags, pre/post research grow-zone menu, actual pawn sow Job, growth, nuts/wood paths, save/reload. Planting capability must coexist with natural wild generation and cannot disable native gathering.
 - **AC20 — individual mountain-green decisions:** `WF-G01` Warabi and `WF-G02` Zenmai do **not** enter grow-zone planting menus in initial release. `WF-G03` Fuki and `WF-G04` Udo **do** enter a valid existing grow-zone menu and can be sown/grown using native plant mechanics **without inventing new equipment or seed items**; they also remain naturally gatherable. When those plants are harvested, their edible parts, re-growth and safety preparation remain species-specific.
