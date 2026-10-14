@@ -4,6 +4,9 @@ This is **handoff/status only**, not the design source. At start of work, read `
 
 ## WFF-OWNER-ENTRY-20261010 — Dedicated repository established
 
+**2026-10-14 source implementation handoff (most recent):** [WFF PR #34](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging/pull/34), merged `b2d653c39af4265d87b8e944872e0ac56c7879ac`, added real native source file [Defs/ThingDefs_Plants/AMJWF_SowingBases.xml](../Defs/ThingDefs_Plants/AMJWF_SowingBases.xml): 14 **abstract** XML inheritance Def templates for eleven newly adopted Foraging species plus three bases. Kuri/walnut/Kaya inherit Vanilla TreeBase and researched region-specific Ground planting, Fuki/Udo allow native Ground planting, Warabi/Zenmai/Jinenjo and three fungi inherit wild-only unsowable PlantBase. **Shii is not redefined**, Environment ownership/wood unaffected. The scoped [native sowing decision](Research/NativeSowingEntryDecision.json) is `use_as_is`, its evidence is [pinned](Research/NativeSowingSourceEvidence-20261014.md); no custom farming C#. Source test [test_native_sowing_bases.py](../Tests/Production/test_native_sowing_bases.py) added. 17/17 GitHub read-back source/schema assertions passed but **official Python/validator and native loaded-game tests NOT RUN**. The templates are ABSTRACT without defName or textures, so there are **NO newly playable or plantable species**; concrete Defs, accepted art, nutrition/yield/growDays/region commonality, actual game sow and old saves still outstanding. Do not confuse source template work with completed AC18–AC22. No other repository source changes or user relay required.
+
+
 **2026-10-14 planting author approval (current owner status):** [WFF PR #32](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging/pull/32), merged `95d3cd60f33e3b0474e5a0bf35ecdb5b6f3b0fef`, resolves **planting decisions individually for all 12 adopted wild foods**, removing any notion of a blanket no-plant rule. Existing Environment-owned Shii continues its own Warm/TreeSowing research/region-limited forest planting **unchanged**. New Foraging-owned Kuri/walnut/Kaya may be planted with native tree research + wild-region restriction, **Fuki and wild Udo may be planted using existing grow zones**, while Warabi/Zenmai are wild-gather-only initially, Jinenjo wild-dig-only initially and Hiratake/Matsutake/Shiitake **not sowable/farmed**. [Owner Acquisition Design](AcquisitionDesign.md) and [the 12-ID matrix](ResourceAcquisitionMatrix.json) are formal authorities; AC18–AC22 add real sow-menu/research/region/pawn Job/save acceptance premises. **No actual PlantDefs, sowJobs, DLL, images or playable feature added**; 16/16 source-structure assertions only, official Python/native tests not run. No Environment tree source or tree research rules changed and no cross-owner work is requested.
 
 
@@ -19,7 +22,7 @@ This is **handoff/status only**, not the design source. At start of work, read `
 
 
 **Owner:** `sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging`  
-**Status:** 12 EDIBLE NATURAL RESOURCES ADOPTED; FOUR ACQUISITION MODES AND SPECIES-SPECIFIC PLANTABILITY AGREED; SHII SOURCE INERT; PLAYABLE DEFS/NATIVE TESTS/RELEASE NOT DONE
+**Status:** 12 EDIBLE NATURAL RESOURCES ADOPTED; 11 ABSTRACT NATIVE SOWING SPECIES TEMPLATES STAGED; SHII SOURCE INERT; CONCRETE PLAYABLE DEFS/NATIVE TESTS/RELEASE NOT DONE
 
 The author supplied this dedicated GitHub repository after Project recorded the confirmed module name, no-new-hunting scope and execution order. Project's previous research/ideas remain historical pointers once owner design is merged. Canonical feature design: `Docs/Design.md`; current source comparison and unresolved VE/non-VE checks: `Docs/Research/ExistingModAudit.md`.
 

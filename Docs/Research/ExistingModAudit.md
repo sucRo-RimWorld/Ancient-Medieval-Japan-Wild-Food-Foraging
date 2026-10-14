@@ -1,6 +1,6 @@
 # Wild Food Foraging — Existing implementation and source audit
 
-**2026-10-10 status:** INCOMPLETE. This is evidence triage, **not** the Project implementation-entry `status=ready` decision. No owner-qualified JSON was created.
+**Historical 2026-10-10 baseline (superseded for two narrowly scoped technical features):** This was initial evidence triage and had no entry JSON at that date. **As of 2026-10-14** the owner now has a [Shii mechanism-only decision](ShiiMechanismDecision.json) and a separate [native sowing abstract-XML reuse decision](NativeSowingEntryDecision.json), each limited to its stated technical source scope. **Neither** approves a complete playable Mod, edible ThingDefs, item balancing, artwork, species natural-spawn quantities, real native game tests or release. Source evidence and concrete/species-specific activation remain separate. Source comparisons for other harvest systems remain incomplete; the existence of plants in other Mods must **never veto the selected Japanese Foraging species**.
 
 **Approved dependency boundary (2026-10-10):** Environment (`sucro.ancientmedievaljapan.environment`) supplies required Japan-native vegetation including `AMJ_Tree_Shii`; no substitute standalone vegetation/biome system is planned for Foraging. This architectural decision does **not** complete VE/non-VE function-overlap research or authorize additional tree/food definitions.
 
