@@ -119,6 +119,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                 {
                     if (!cell.Standable(map) || cell.Fogged(map) ||
                         map.zoneManager.ZoneAt(cell) != null ||
+                        // A pawn must not begin its native Sow job standing on the planting cell.
+                        map.mapPawns.AllPawnsSpawned.Any(other => other.Position == cell) ||
                         map.terrainGrid.TerrainAt(cell).fertility < plant.plant.fertilityMin ||
                         !pawn.CanReach(cell, PathEndMode.OnCell, Danger.Some) ||
                         cell.GetThingList(map).Any(t => t is Plant ||

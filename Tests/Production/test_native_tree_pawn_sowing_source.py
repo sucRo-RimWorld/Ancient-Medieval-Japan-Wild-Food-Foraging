@@ -18,6 +18,7 @@ class TestTreePawnSowingSource(unittest.TestCase):
             '"AMJWF_Probe_Kaya"',
             "new Zone_Growing(map.zoneManager)",
             "candidate.SetPlantDefToGrow(plant)",
+            "map.mapPawns.AllPawnsSpawned.Any(other => other.Position == cell)",
             "plant.plant.sowMinSkill",
             "skill.Level = naturalRequirement",
             "nativeSkillSatisfied.Count == 3",
