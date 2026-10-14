@@ -11,6 +11,7 @@ isolated test profile. Running this builder is only a file/manifest smoke test.
 from __future__ import annotations
 
 import argparse
+import os
 from pathlib import Path
 import shutil
 import tempfile
@@ -69,14 +70,16 @@ The build script merely stages fixtures: it does NOT run these native checks.
 """
 
 def build(output: Path) -> Path:
-    temp_root = Path(tempfile.gettempdir()).resolve()
+    temp_roots = [Path(tempfile.gettempdir()).resolve()]
+    # GitHub runners use a separate protected work/_temp directory.
+    runner_temp = os.environ.get("RUNNER_TEMP")
+    if runner_temp:
+        temp_roots.append(Path(runner_temp).resolve())
     dest = output.resolve()
-    # Deliberately accept only temporary folders to avoid touching live Mods.
-    try:
-        dest.relative_to(temp_root)
-    except ValueError as exc:
-        raise ValueError("Probe output must remain under system temporary directory") from exc
-    if dest == temp_root or dest.exists():
+    # Deliberately accept only system/CI temp, never installed player Mods.
+    if not any(dest != root and dest.is_relative_to(root) for root in temp_roots):
+        raise ValueError("Probe output must remain under system or runner temp")
+    if dest.exists():
         raise ValueError("Output must be a NEW, empty probe folder under temp")
     for source in (BASES, PLANTS, PATCH):
         tree = ET.parse(source)
