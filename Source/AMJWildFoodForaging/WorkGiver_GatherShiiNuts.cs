@@ -16,9 +16,9 @@ namespace AMJ.WildFoodForaging
             if (gather == null)
                 yield break;
 
-            foreach (var designation in pawn.Map.designationManager.allDesignations)
+            foreach (var designation in pawn.Map.designationManager.SpawnedDesignationsOfDef(gather))
             {
-                if (designation.def == gather && designation.target.HasThing)
+                if (designation.target.HasThing)
                     yield return designation.target.Thing;
             }
         }
