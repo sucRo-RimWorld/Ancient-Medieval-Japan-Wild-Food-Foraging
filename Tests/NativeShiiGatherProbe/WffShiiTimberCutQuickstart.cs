@@ -125,7 +125,7 @@ namespace AMJ.WildFoodForaging.NativeTests
 
         public override QuickstartVerification Verify()
         {
-            if (tree != null && map != null && pawn != null)
+            if (tree != null && map != null && pawn != null && wood != null)
             {
                 var designation = map.designationManager.DesignationOn(
                     tree, DesignationDefOf.CutPlant);
