@@ -40,7 +40,8 @@ class NativeSowingBaseContract(unittest.TestCase):
         self.assertEqual(len(self.defs), 14)
         self.assertEqual(len(self.by_name), 14)
         self.assertEqual(set(EXPECTED), set(self.matrix) - {"WF-N01"})
-        self.assertNotIn("AMJ_Tree_Shii", SRC.read_text(encoding="utf-8").split("</Defs>")[0].split("<!-- N01 Sudajii")[0])
+        self.assertNotIn("AMJ_Tree_Shii", self.by_name)
+        self.assertTrue(all(d.find("defName") is None for d in self.defs))
 
     def test_tree_inheritance_uses_native_planting_research_without_override(self):
         tree = self.by_name["AMJWF_ForageNutTreeBase"]
@@ -83,7 +84,8 @@ class NativeSowingBaseContract(unittest.TestCase):
                     "WF-F01", "WF-F02", "WF-F03"):
             name, parent = EXPECTED[id_]
             self.assertEqual(parent, "AMJWF_WildOnlyPlantBase", name)
-            self.assertNotIn("sow", self.matrix[id_]["plantingPolicy"])
+            self.assertIn(self.matrix[id_]["plantingPolicy"],
+                          ("wild_only_initial", "wild_dig_only_initial", "fungus_not_sowable"))
 
     def test_no_mandatory_second_mod_or_unapproved_numbers(self):
         for id_, item in self.matrix.items():
