@@ -62,8 +62,12 @@ Under an **isolated native RimWorld 1.6 test instance**, verify:
    TreeSowing because the fixture defines no wild population there.
 3. Fuki/Udo are available as Ground sow options with normal pawns, but
    Warabi/Zenmai/Jinenjo and three fungus probes are not sowable.
-4. Actually plant, grow, save/reload; inspect logs and wood chopping.
-5. Shii in Environment is unchanged and still independently sowable under
+4. Run WffNativePawnSowingQuickstart to require actual Fuki/Udo
+   pawn WorkGiver_GrowerSow -> JobDefOf.Sow -> planted diagnostic Plant,
+   with the zone grid and selected species unchanged. This is still
+   a disposable native test, not production growth or food acceptance.
+5. Separately check actual growth, save/reload and wood chopping.
+6. Shii in Environment is unchanged and still independently sowable under
    its original native research/region conditions.
 
 The build script merely stages fixtures: it does NOT run these native checks.
