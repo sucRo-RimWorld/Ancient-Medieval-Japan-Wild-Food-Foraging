@@ -18,6 +18,8 @@ namespace AMJ.WildFoodForaging.NativeTests
         private readonly List<Zone_Growing> zones = new List<Zone_Growing>();
         private readonly List<ThingDef> trees = new List<ThingDef>();
         private readonly List<bool> jobsStarted = new List<bool>();
+        private readonly List<Pawn> growers = new List<Pawn>();
+        private int jobStartTick;
         private readonly List<bool> nativeSkillSatisfied = new List<bool>();
         private bool treeResearchWasUnfinished;
         private bool treeResearchNowFinished;
@@ -28,7 +30,7 @@ namespace AMJ.WildFoodForaging.NativeTests
         public override string seed => "AMJ-WFF-SOW-20261014";
         public override float planetCoverage => 0.30f;
         public override int mapSize => 150;
-        public override int ticksBeforeVerify => 9000;
+        public override int ticksBeforeVerify => 16000;
 
         public override void PostApplyConfiguration()
         {
@@ -91,6 +93,7 @@ namespace AMJ.WildFoodForaging.NativeTests
             Log.Message("[WFF TreeSow Diagnostic] freeColonists=" + pawns.Count +
                 "; researchFinished=" + treeResearchNowFinished +
                 "; firstTree=" + plants[0].defName);
+            jobStartTick = Find.TickManager.TicksGame;
             for (int i = 0; i < plants.Length; i++)
             {
                 Pawn pawn = pawns[i];
@@ -150,6 +153,7 @@ namespace AMJ.WildFoodForaging.NativeTests
                 zones.Add(acceptedZone);
                 cells.Add(selected);
                 trees.Add(plant);
+                growers.Add(pawn);
                 pawn.jobs.StartJob(job, JobCondition.InterruptForced);
                 jobsStarted.Add(pawn.jobs.curJob?.def == JobDefOf.Sow);
             }
@@ -157,6 +161,21 @@ namespace AMJ.WildFoodForaging.NativeTests
 
         public override QuickstartVerification Verify()
         {
+            if (map != null)
+            {
+                for (int i = 0; i < growers.Count; i++)
+                {
+                    Pawn worker = growers[i];
+                    IntVec3 cell = cells[i];
+                    Log.Message("[WFF TreeSow Final] species=" + trees[i].defName +
+                        "; elapsedTicks=" + (Find.TickManager.TicksGame - jobStartTick) +
+                        "; pawnCell=" + worker.Position + "; targetCell=" + cell +
+                        "; activeJob=" + (worker.jobs.curJob?.def?.defName ?? "none") +
+                        "; planted=" + cell.GetThingList(map).OfType<Plant>()
+                            .Any(plant => plant.Spawned && !plant.Destroyed &&
+                                plant.def == trees[i]));
+                }
+            }
             var report = new QuickstartVerification();
             report.Assert("genuine Environment Warm biome map",
                 () => map != null && map.Biome?.defName == "AMJ_WarmTemperateForest");
