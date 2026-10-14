@@ -13,6 +13,9 @@
 
 Both successful runs launched real isolated **RimWorldLinux 1.6.4871 rev600** with mandatory Environment and Xvfb using the Project private host. The source SHA is pinned at runtime; the fixture was removed afterwards in each result (`fixture_removed=true`). The actual job run compiled the three original WFF mechanic classes plus a separate test Quickstart using **real 1.6 Managed references**, zero compiler errors and warnings; native source artifact fingerprints are in the linked run results.
 
+| [38516174487](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/actions/runs/38516174487) | `WffShiiCancelQuickstart`, WFF `b2e9cbb29058d92acd350506c93cb933f4307903` | **PASS**: 8/8 assertions, 0 prelaunch/Unity/log errors, game exit 0, 10 real ticks | Real pawn Job remains active before cancellation; `StopAll` generates no synthetic output/cooldown, retains original gathering designation and timber |
+| [38516178483](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Project/actions/runs/38516178483) | `WffShiiRaceQuickstart`, same WFF source | **PASS**: 9/9 assertions, 0 prelaunch/Unity/log errors, game exit 0, 1200 real ticks | Two genuine colonists can independently reach the target before reservation; after first pawn starts and reserves, second WorkGiver rejects it; one diagnostic output, no duplicate; tree, timber and cooldown intact |
+
 ## Actual test premises — diagnostic, not adopted balance
 
 - **Target:** Existing naturally spawned Environment `AMJ_Tree_Shii` in an actual `AMJ_WarmTemperateForest` world tile. The test may set `Growth=1` on its selected tree **only on the disposable map**, so it does **not** prove natural harvest season or naturally reached maturity.
@@ -25,8 +28,8 @@ Both successful runs launched real isolated **RimWorldLinux 1.6.4871 rev600** wi
 
 - **F01–F04:** Production install metadata, real edible nut output, cut-tree timber count and `PlantCollected` interception instrumentation, MO WoodChain and cut-after-gather paths remain untested. The test-only native Job route provides **partial F04 mechanism** evidence, not full F04.
 - **F05:** Only immediate cooldown suppression; persistence, boundary crossing, save/reload and re-add still **NOT RUN**.
-- **F06:** One-pawn WorkGiver/Job and designation completion observed. Two-pawn contention, race/cancellation, draft/forbidden/unreachable transitions and failed placement remain **NOT RUN**.
+- **F06:** One-pawn WorkGiver/Job and designation completion observed. Two-pawn WorkGiver reservation contention and early Job cancellation **PASS in separate isolated diagnostic scenarios**; simultaneous forced second Job, late cancellation, drafted/forbidden/unreachable transitions and failed placement remain **NOT RUN**.
 - **F07–F14:** Target loss during work, species eligibility beyond this fixture, genuine pre-Foraging older save, natural full lifecycle, season, 4 profiles, 1.7, UI/approved artwork and distribution evidence remain **NOT RUN**.
 - **AC01–AC22:** no complete resource acceptance has been promoted. The earlier Warm/Cool 40/40 sowing-command checks are separate diagnostic evidence.
 
-**Next tests:** two-pawn reservation/cancellation, per-tree saved cooldown across save/reload, old-AMJE pre-Foraging save upgrade; then MO/CCTO profiles. Do not use the previously incompatible unrelated DLC `test-colony` save, and do not run tests in the player's active game.
+**Next tests:** save/reload and boundary retention of per-tree cooldown, old-AMJE pre-Foraging save upgrade, post-work-mid-tick cancellation and target-loss/drafted/unreachable states; then MO/CCTO profiles. Do not use the previously incompatible unrelated DLC `test-colony` save, and do not run tests in the player's active game.
