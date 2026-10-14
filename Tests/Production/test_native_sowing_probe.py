@@ -53,6 +53,17 @@ class NativeSowingProbeContract(unittest.TestCase):
         self.assertEqual(got, {"AMJWF_Probe_" + k: v for k, v in EXPECTED.items()})
         self.assertTrue(set(got.values()).issubset(self.bases))
 
+    def test_non_tree_probes_have_zero_nutrition_without_false_food_status(self):
+        """Avoid native loaded-Def errors: synthetic plants are never themselves edible."""
+        for def_ in self.defs:
+            name = def_.findtext("defName")
+            preferability = def_.findtext("ingestible/preferability")
+            if name in ("AMJWF_Probe_Kuri", "AMJWF_Probe_Walnut", "AMJWF_Probe_Kaya"):
+                self.assertIsNone(preferability, name)
+            else:
+                self.assertEqual(preferability, "NeverForNutrition", name)
+            self.assertIsNone(def_.find("ingestible/nutrition"), name)
+
     def test_research_and_region_gates_are_inherited_not_overridden(self):
         for def_ in self.defs:
             if def_.findtext("defName") in {
