@@ -14,6 +14,7 @@ import argparse
 from pathlib import Path
 import shutil
 import tempfile
+import uuid
 import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -105,8 +106,7 @@ def main() -> None:
     args = parser.parse_args()
     folder = args.output
     if folder is None:
-        folder = Path(tempfile.gettempdir()) / next(tempfile._get_candidate_names())
-        folder = folder.with_name("amjwf-native-sowing-probe-" + folder.name)
+        folder = Path(tempfile.gettempdir()) / ("amjwf-native-sowing-probe-" + uuid.uuid4().hex[:12])
     print("Staged TEST-ONLY, non-publishable, non-player Mod at:", build(folder))
 
 if __name__ == "__main__":
