@@ -52,6 +52,12 @@ class TestShiiSourceContract(unittest.TestCase):
         self.assertIn("if (designation != null)", job)
         self.assertNotIn("RemoveAllDesignations", job)
 
+    def test_scanner_uses_public_spawned_designation_api(self):
+        content = read("WorkGiver_GatherShiiNuts.cs")
+        self.assertIn("designationManager.SpawnedDesignationsOfDef(gather)", content)
+        self.assertNotIn("designationManager.allDesignations", content)
+        self.assertIn("designation.target.HasThing", content)
+
     def test_workgiver_is_limited_to_designated_shii(self):
         content = read("WorkGiver_GatherShiiNuts.cs")
         for token in ['DesignationOn(thing, gather)', 'thing.def.defName != "AMJ_Tree_Shii"',
