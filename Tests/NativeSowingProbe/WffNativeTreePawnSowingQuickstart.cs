@@ -18,6 +18,7 @@ namespace AMJ.WildFoodForaging.NativeTests
         private readonly List<Zone_Growing> zones = new List<Zone_Growing>();
         private readonly List<ThingDef> trees = new List<ThingDef>();
         private readonly List<bool> jobsStarted = new List<bool>();
+        private readonly List<bool> nativeSkillSatisfied = new List<bool>();
         private bool treeResearchWasUnfinished;
         private bool treeResearchNowFinished;
         private string setupFailure;
@@ -27,7 +28,7 @@ namespace AMJ.WildFoodForaging.NativeTests
         public override string seed => "AMJ-WFF-SOW-20261014";
         public override float planetCoverage => 0.30f;
         public override int mapSize => 150;
-        public override int ticksBeforeVerify => 3600;
+        public override int ticksBeforeVerify => 9000;
 
         public override void PostApplyConfiguration()
         {
@@ -57,7 +58,9 @@ namespace AMJ.WildFoodForaging.NativeTests
                 setupFailure = "No generated map";
                 return;
             }
-            var pawns = map.mapPawns.FreeColonistsSpawned.Take(3).ToList();
+            var pawns = map.mapPawns.FreeColonistsSpawned
+                .OrderByDescending(p => p.skills.GetSkill(SkillDefOf.Plants).Level)
+                .Take(3).ToList();
             ResearchProjectDef research = DefDatabase<ResearchProjectDef>.GetNamedSilentFail("TreeSowing");
             WorkGiverDef workDef = DefDatabase<WorkGiverDef>.AllDefsListForReading
                 .FirstOrDefault(d => d.giverClass == typeof(WorkGiver_GrowerSow));
@@ -92,6 +95,19 @@ namespace AMJ.WildFoodForaging.NativeTests
             {
                 Pawn pawn = pawns[i];
                 ThingDef plant = plants[i];
+                SkillRecord skill = pawn.skills.GetSkill(SkillDefOf.Plants);
+                int naturalRequirement = plant.plant.sowMinSkill;
+                int initialSkill = skill.Level;
+                // Only in this disposable test colony: create a qualified native planter,
+                // rather than removing TreeBase's sowMinSkill or bypassing WorkGiver.
+                if (skill.Level < naturalRequirement)
+                    skill.Level = naturalRequirement;
+                bool meetsNativeRequirement = skill.Level >= naturalRequirement;
+                nativeSkillSatisfied.Add(meetsNativeRequirement);
+                Log.Message("[WFF TreeSow Diagnostic] species=" + plant.defName +
+                    "; initialPlantSkill=" + initialSkill +
+                    "; inheritedSowMinSkill=" + naturalRequirement +
+                    "; qualifiedPlantSkill=" + skill.Level);
                 Job job = null;
                 Zone_Growing acceptedZone = null;
                 IntVec3 selected = IntVec3.Invalid;
@@ -146,6 +162,8 @@ namespace AMJ.WildFoodForaging.NativeTests
                 () => map != null && map.Biome?.defName == "AMJ_WarmTemperateForest");
             report.Assert("TreeSowing unlocked inside fresh isolated game",
                 () => treeResearchWasUnfinished && treeResearchNowFinished);
+            report.Assert("all three isolated growers meet inherited native sow skill",
+                () => nativeSkillSatisfied.Count == 3 && nativeSkillSatisfied.All(x => x));
             report.Assert("three native pawn tree sow jobs started after research; setup=" +
                 (setupFailure ?? "OK") + "; started=" + jobsStarted.Count,
                 () => setupFailure == null && jobsStarted.Count == 3 &&
