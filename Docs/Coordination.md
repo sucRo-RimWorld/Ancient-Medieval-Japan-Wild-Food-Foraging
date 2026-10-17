@@ -2,6 +2,10 @@
 
 Current active handoff and outstanding work **only**. Formal sources: [Design](Design.md), [12 edible natural products](ResourceAdoption-v1.md), [Acquisition/planting](AcquisitionDesign.md), [resource-to-mechanism matrix](ResourceAcquisitionMatrix.json), [AC01–AC22 native test premises](Testing/ResourceAcquisitionContract.md) and [Shii F01–F14](Testing/TreeProductCollectionContract.md). Prior progress/corrections remain in Git PR/commit history; this file is **not** a duplicate design.
 
+## WFF-RETIRED-OWNER-20261017 — Environment integration handoff
+
+**Owner:** [AMJ Environment](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/ForagingIntegrationDesign-ja.md). **Status:** STANDALONE DEVELOPMENT/RELEASE RETIRED; HISTORIC RESEARCH AND NATIVE DIAGNOSTICS RETAINED; ENVIRONMENT INTEGRATION PRODUCTION OPEN. Author decided on 2026-10-17 to integrate all twelve accepted natural foods and collection mechanics into a later Environment forest-food major-feature update. Former WFF dependency direction and standalone ownership below are superseded historical records. Do not start any independent WFF package/Workshop publication or run old standalone diagnostics as the final integrated game; the original 12-food choices, safety/forage/planting/host rules and earlier scoped test evidence remain usable. Formal owner is Environment `Docs/Design.md` + `Docs/ForagingIntegrationDesign-ja.md`; WFF source, matrix and prior audits are preserved as migration provenance. The Environment 0.2.0 four wetland species release remains ahead of this transfer. All-AMJ food balance with Grains/Rice was always in scope; no new balance issue is created solely by owner merger.
+
 ## WFF-OWNER-ENTRY-20261010 — active status, 2026-10-14
 
 **Owner:** `sucRo-RimWorld/Ancient-Medieval-Japan-Wild-Food-Foraging`

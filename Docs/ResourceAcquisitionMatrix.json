@@ -332,5 +332,10 @@
     "rootPolicy": "Wild Jinenjo harvested as a root and not normally sowable in this wild-foraging module's initial release.",
     "fungusPolicy": "Three wild fungi remain entirely non-sowable; fruiting bodies depend on host/substrate and cannot be produced by planting grow zones.",
     "unknowns": "Actual XML/loaded menu, sow Job, soil, growth, harvest and region gating not tested; no numeric seeds, research times or stats introduced."
-  }
+  },
+  "historicalArchive": true,
+  "ownerSupersededOn": "2026-10-17",
+  "currentProductionOwner": "sucRo-RimWorld/Ancient-Medieval-Japan-Environment",
+  "currentDesignPath": "Docs/ForagingIntegrationDesign-ja.md",
+  "migrationNote": "All old Foraging-owned/Foraging patch language in historical entries was superseded by author on 2026-10-17. No playable WFF or production adoption, values, or models newly approved. Do not deploy this diagnostic matrix as runtime source."
 }
