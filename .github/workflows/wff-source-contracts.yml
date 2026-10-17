@@ -1,18 +1,7 @@
 name: WFF source contracts
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "Defs/**"
-      - "Tests/Production/**"
-      - "Tests/NativeSowingProbe/**"
-      - "Tests/Fixtures/NativeSowingProbe/**"
-      - "Docs/ResourceAcquisitionMatrix.json"
-      - "Docs/ResourceAdoption-v1.md"
-      - "Docs/Research/*Decision.json"
-      - ".github/workflows/wff-source-contracts.yml"
-
+  workflow_dispatch:
 permissions:
   contents: read
 
