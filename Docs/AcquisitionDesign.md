@@ -1,3 +1,5 @@
+> **2026-10-17 作者確定：本リポジトリは過去の設計・診断試験の保存版。** Wild Food Foragingの12資源・採集・出現/食用安全要件は[AMJ Environment正式設計](https://github.com/sucRo-RimWorld/Ancient-Medieval-Japan-Environment/blob/main/Docs/ForagingIntegrationDesign-ja.md)に移管した。以下の「Foraging所有」「Foraging→Environment必須依存」「独立配布予定」は**移管前の歴史的記述として失効**し、本番実装の正本ではない。独立WFF Modの実装・配布は停止。試作・試験証拠は削除・再分類せず残す。Environmentの湿地4種0.2.0と、山野食料の後日大型更新は別工程。
+
 # 山野採集 — 12資源の採集方式・食用前処理・生息環境（2026-10-14）
 
 **対象：** [採用確定12資源](ResourceAdoption-v1.md)。各資源の個別候補・所有・生態制約・未確定数値は [ResourceAcquisitionMatrix.json](ResourceAcquisitionMatrix.json) を対照表とする。この文書は既採用資源の**採集方式を分類する設計**であり、実ゲームで機能するDef/Jobを追加したわけではない。すべての実装方式は**候補**。採集量・作業時間・成熟度・更新周期・季節の閾値・栄養数値・出現重みを確定したことにしない。
